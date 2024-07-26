@@ -2,19 +2,18 @@
 
 namespace RealEstateAPI.Exceptions
 {
-    public class UnableToAddException : Exception
+    public class NoPropertyException: Exception
     {
         string msg;
-        public UnableToAddException()
+        public NoPropertyException()
         {
             msg = string.Empty;
         }
 
-        public UnableToAddException(string? message) : base(message)
+        public NoPropertyException(string? message) : base(message)
         {
             msg = $"{message}";
         }
-
         public override string Message => msg;
     }
 }

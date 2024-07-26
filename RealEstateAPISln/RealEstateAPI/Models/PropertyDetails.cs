@@ -17,8 +17,7 @@ namespace RealEstateAPI.Models
         public int? CommercialAreaInSqFt { get; set; }
 
         [ForeignKey("Property")]
-        public int PId { get; set; }
+        public int? PId { get; set; }
 
-        public Property? Property { get; set; }
     }
 }

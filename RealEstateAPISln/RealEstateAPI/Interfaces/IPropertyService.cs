@@ -6,8 +6,9 @@ namespace RealEstateAPI.Interfaces
     public interface IPropertyService
     {
         Task<Property> AddNewProperty(PostPropertyDTO property);
+        Task<Property> UpdateProperty(PostPropertyDTO property);
         Task<Property> RemoveProperty(int id);
-        Task<Property> GetPropertyById(int id);
-        Task<IEnumerable<Property>> GetAllProperties();
+        Task<GetPropertyDTO> GetPropertyById(int id);
+        Task<IEnumerable<GetPropertyDTO>> GetAllProperties();
     }
 }

@@ -7,7 +7,8 @@
 
         public ErrorModel(int errorCode, string message)
         {
-
+            ErrorCode = errorCode;
+            Message = message;
         }
 
         public ErrorModel() { }

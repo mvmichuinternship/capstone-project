@@ -15,13 +15,6 @@ namespace RealEstateAPI.Exceptions
             msg = $"{message}";
         }
 
-        public NoUserException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
-
-        protected NoUserException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
         public override string Message => msg;
     }
 }

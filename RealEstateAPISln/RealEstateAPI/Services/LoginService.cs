@@ -214,7 +214,7 @@ namespace RealEstateAPI.Services
                     userDB.Role = loginTokenDTO.Role;
                     await _tokenRepo.Update(userDB);
                     var td = await _tokenRepo.Get(loginTokenDTO.Email);
-                    res.Token = loginTokenDTO.Token;
+                    res.Token = _tokenService.GenerateToken(td);
                     res.Email = td.UserEmail;
                     res.Role = td.Role;
                 }

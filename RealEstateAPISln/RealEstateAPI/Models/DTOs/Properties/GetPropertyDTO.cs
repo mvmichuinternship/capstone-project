@@ -1,23 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstateAPI.Enums;
-using System.ComponentModel.DataAnnotations;
-using Twilio.TwiML.Messaging;
 
-namespace RealEstateAPI.Models
+namespace RealEstateAPI.Models.DTOs.Properties
 {
-    public class Property
+    public class GetPropertyDTO
     {
-        [Key]
         public int PId { get; set; }
         public string UserEmail { get; set; }
         public string Name { get; set; }
-        public PropertyType PropertyType { get; set; }
+        public string PropertyType { get; set; }
         public PropertyDetails PropertyDetails { get; set; }
-        public ResidentialSubtype? ResidentialSubtype { get; set; }
-        public CommercialSubtype? CommercialSubtype { get; set; }
+        public string? ResidentialSubtype { get; set; }
+        public string? CommercialSubtype { get; set; }
         public string Location { get; set; }
         public List<Media> Media { get; set; }
-        [Precision(14, 2)]
         public decimal Price { get; set; }
     }
 }
