@@ -1,0 +1,67 @@
+-------------------------------------------------------------
+DATA MODELS
+
+1. User
+	- uid
+	- Name
+	- user_email
+	- phone
+	- password
+	- role
+
+2. TokenData
+	- tid
+	- user_email
+	- password
+	- passwordKey
+	- token
+
+3. Property
+	- pid
+	- user_email
+	- name
+	- Property_type (refer Enums)
+	- PropertyDetails
+	- Residential_subtype (refer Enums)
+	- Commercial_subtype (refer Enums)
+	- Location
+	- Property detail
+	- Media (list)
+	- price
+
+4. Media 
+	- id
+	- url
+	- type
+
+5. PropertyDetails
+	- id
+	- NumberOfBedrooms
+	- NumberOfBathrooms
+	- AreaInSqFt
+	
+	- PropertyDimensionsWidth
+	- PropertyDimensionsLength
+	- HasConstructions
+	- WidthofFacingRoad
+	- CommercialAreaInSqFt
+
+6. Contact
+	- cid
+	- name
+	- email
+	- pid
+-------------------------- 
+ENUMS 
+
+1. Property Type
+	- Residential
+	- Commercial
+2. Residential Subtype
+	- Villa
+	- Apartment
+	- Pg
+3. Commercial Subtype
+	- Plot
+	- Hospitality
+-------------------------------------------------------------

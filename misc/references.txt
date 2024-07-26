@@ -1,0 +1,12 @@
+https://learn.microsoft.com/en-us/azure/app-service/deploy-azure-pipelines?tabs=yaml
+
+https://www.kambu.pl/blog/how-to-deploy-a-react-app-together-with-net-backend-to-azure-with-azure-devops/
+
+https://jasonwatmore.com/post/2020/01/10/react-aspnet-core-on-azure-with-sql-server-how-to-deploy-a-full-stack-app-to-microsoft-azure
+
+microservices:
+https://dotnet.microsoft.com/en-us/learn/aspnet/microservice-tutorial/intro
+
+https://learn.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/data-driven-crud-microservice
+
+https://medium.com/@darshana-edirisinghe/net-web-api-dockerization-f13ee8cc0b45

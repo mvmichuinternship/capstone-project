@@ -1,0 +1,10 @@
+Backend:
+
+--> user.cs model
+--> tokendata.cs model
+--> user repo
+--> login service
+	-> register
+	-> login with mobile
+	-> login with password
+--> token service

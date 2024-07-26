@@ -1,0 +1,39 @@
+real estate app
+
+buy
+sell
+rent
+
+roles 
+	--> seller
+	--> buyer/rentee
+1. Seller
+
+	--> Login 
+	--> Post property
+	--> View all properties
+	--> View single property
+	--> Edit and delete options
+2. Buyer
+	--> Login
+	--> View properties
+	--> filter and search
+	--> contact owner (basic user) 
+	--> view owner details (premium user)
+-----------------------------------------------------
+Register 
+	--> Enter details
+	--> Role based
+Login 
+	--> Login using credentials
+	--> Redirect to dashboard
+Dashboard 
+	--> Buy, sell or rent options
+	--> Filter and search listings
+-----------------------------------------------------
+FE
+
+Landing page --> Register/Login --> Dashboard --> View property --> Send contact details
+
+Landing page --> Register/Login --> Dashboard --> Post property --> View Property --> Edit/Delete listing
+
