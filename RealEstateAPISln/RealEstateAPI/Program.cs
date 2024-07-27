@@ -107,12 +107,6 @@ namespace RealEstateAPI
             //}));
             //#endregion
 
-            #region firebase
-            builder.Services.AddSingleton(FirebaseApp.Create(new AppOptions()
-            {
-                Credential = GoogleCredential.FromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "serviceAccountKey.json")),
-            }));
-            #endregion
 
             var app = builder.Build();
 

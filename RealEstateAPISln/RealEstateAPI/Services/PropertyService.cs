@@ -30,8 +30,8 @@ namespace RealEstateAPI.Services
             {
                 property1 = await MapToProperty(property);
                 property1 = await _propertyRepo.Add(property1);
-                //propDet = await MapToPropertyDetails(property1);
-                //propDet= await _propertyDetailsRepo.Add(propDet);
+                propDet = await MapToPropertyDetails(property1);
+                propDet = await _propertyDetailsRepo.Update(propDet);
                 media = await MapToMedia(property);
                 //m= new Media();
                 foreach (var i in media)
@@ -75,14 +75,8 @@ namespace RealEstateAPI.Services
 
         private async Task<PropertyDetails> MapToPropertyDetails( Property prop)
         {
-            PropertyDetails propDet = new PropertyDetails();
-            propDet.NumberOfBedrooms= prop.PropertyDetails.NumberOfBedrooms;
-            propDet.NumberOfBathrooms = prop.PropertyDetails.NumberOfBathrooms;
-            propDet.AreaInSqFt = prop.PropertyDetails.AreaInSqFt;
-            propDet.PropertyDimensionsLength= prop.PropertyDetails.PropertyDimensionsLength ;
-            propDet.PropertyDimensionsWidth= prop.PropertyDetails.PropertyDimensionsWidth ;
-            propDet.CommercialAreaInSqFt= prop.PropertyDetails.CommercialAreaInSqFt ;
-            propDet.WidthofFacingRoad= prop.PropertyDetails.WidthofFacingRoad ;
+            PropertyDetails propDet;
+            propDet = await _propertyDetailsRepo.Get(prop.PropertyDetails.Id);
             propDet.PId = prop.PId;
             return propDet;
         }
@@ -175,8 +169,8 @@ namespace RealEstateAPI.Services
             try
             {
                 var prop = await _propertyRepo.Get(id);
-                var pd = await  _propertyDetailsRepo.Delete(prop.PropertyDetails.Id);
                 var property = await _propertyRepo.Delete(id);
+                var pd = await  _propertyDetailsRepo.Delete(prop.PropertyDetails.Id);
                 return property;
             }
             catch (Exception ex)
@@ -185,28 +179,90 @@ namespace RealEstateAPI.Services
             }
         }
 
-        public async Task<Property> UpdateProperty(PostPropertyDTO property)
+        //public async Task<Property> UpdateProperty(PostPropertyDTO property)
+        //{
+        //        PropertyDetails pd =null;
+        //        Property getPropertyDTO =null;
+        //        Media media = new Media();
+        //    try
+        //    {
+        //        getPropertyDTO = await _propertyRepo.Get(property.PId);
+        //        var medias = property.Media;
+        //        foreach (var item in medias)
+        //        {
+        //            media.Id = item.Id;
+        //            media.Url= item.Url;
+        //            media.Type = item.Type;
+        //            media = await _mediaRepo.Update(media);
+        //            medias.Add(media);
+        //        }
+        //        pd = await MapToPD(property.PropertyDetails);
+        //        pd = await _propertyDetailsRepo.Update(pd);
+        //        getPropertyDTO.PropertyDetails = pd;
+        //        getPropertyDTO.UserEmail = property.UserEmail;
+        //        getPropertyDTO.PropertyType = (PropertyType)Enum.Parse(typeof(PropertyType), property.PropertyType, true);
+        //        getPropertyDTO.Price = property.Price;
+        //        getPropertyDTO.CommercialSubtype = property.CommercialSubtype == null ? null : (CommercialSubtype)Enum.Parse(typeof(CommercialSubtype), property.CommercialSubtype);
+        //        getPropertyDTO.Name = property.Name;
+        //        getPropertyDTO.PId = property.PId;
+        //        getPropertyDTO.Location = property.Location;
+        //        getPropertyDTO.ResidentialSubtype = property.ResidentialSubtype == null ? null : (ResidentialSubtype)Enum.Parse(typeof(ResidentialSubtype), property.ResidentialSubtype);
+        //        getPropertyDTO.Media = medias;
+        //        getPropertyDTO = await _propertyRepo.Update(getPropertyDTO);
+        //        return getPropertyDTO;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new NoPropertyException("Property not found");
+        //    }
+
+        //}
+
+
+        public async Task<Property> UpdateProperty(PostPropertyDTO propertyDto)
         {
+            
+            Property getPropertyDTO = null;
+            List<Media> updatedMedias = new List<Media>();
+
             try
             {
-                IList<Media> medias = new List<Media>();
-                foreach (var item in medias)
+                getPropertyDTO = await _propertyRepo.Get(propertyDto.PId);
+                Console.WriteLine(getPropertyDTO.Media[0].Url);
+                Console.WriteLine(getPropertyDTO.PropertyDetails.Id);
+                if (getPropertyDTO == null)
                 {
-                    var md = await _mediaRepo.Update(item);
-                    medias.Add(md);
+                    throw new NoPropertyException("Property not found");
                 }
-                PropertyDetails pd = new PropertyDetails();
-                Property getPropertyDTO = await _propertyRepo.Get(property.PId);
-                getPropertyDTO.PropertyType = (PropertyType)Enum.Parse(typeof(PropertyType), property.PropertyType, true);
-                getPropertyDTO.PropertyDetails = await _propertyDetailsRepo.Update(property.PropertyDetails);
-                getPropertyDTO.UserEmail = property.UserEmail;
-                getPropertyDTO.Price = property.Price;
-                getPropertyDTO.CommercialSubtype = property.CommercialSubtype == null ? null : (CommercialSubtype)Enum.Parse(typeof(CommercialSubtype), property.CommercialSubtype);
-                getPropertyDTO.Name = property.Name;
-                getPropertyDTO.PId = property.PId;
-                getPropertyDTO.Location = property.Location;
-                getPropertyDTO.ResidentialSubtype = property.ResidentialSubtype == null ? null : (ResidentialSubtype)Enum.Parse(typeof(ResidentialSubtype), property.ResidentialSubtype);
-                getPropertyDTO.Media = property.Media;
+
+                for (var i=0; i<propertyDto.Media.Count;i++)
+                {
+                    Media media = getPropertyDTO.Media[i];
+                    if (media == null)
+                    {
+                        media = new Media();
+                    }
+                    media.Url = propertyDto.Media[i].Url;
+                    media.Type = propertyDto.Media[i].Type;
+                    media = await _mediaRepo.Update(media);
+                    updatedMedias.Add(media);
+                }
+
+                
+                var pd = await MapToPD(propertyDto.PropertyDetails, getPropertyDTO);
+                pd = await _propertyDetailsRepo.Update(pd);
+
+                getPropertyDTO.PropertyDetails = pd;
+                getPropertyDTO.UserEmail = propertyDto.UserEmail;
+                getPropertyDTO.PropertyType = (PropertyType)Enum.Parse(typeof(PropertyType), propertyDto.PropertyType, true);
+                getPropertyDTO.Price = propertyDto.Price;
+                getPropertyDTO.CommercialSubtype = propertyDto.CommercialSubtype == null ? null : (CommercialSubtype)Enum.Parse(typeof(CommercialSubtype), propertyDto.CommercialSubtype);
+                getPropertyDTO.Name = propertyDto.Name;
+                getPropertyDTO.PId = propertyDto.PId;
+                getPropertyDTO.Location = propertyDto.Location;
+                getPropertyDTO.ResidentialSubtype = propertyDto.ResidentialSubtype == null ? null : (ResidentialSubtype)Enum.Parse(typeof(ResidentialSubtype), propertyDto.ResidentialSubtype);
+                getPropertyDTO.Media = updatedMedias;
+
                 getPropertyDTO = await _propertyRepo.Update(getPropertyDTO);
                 return getPropertyDTO;
             }
@@ -214,8 +270,26 @@ namespace RealEstateAPI.Services
             {
                 throw new NoPropertyException("Property not found");
             }
-
         }
+
+        private async Task<PropertyDetails> MapToPD(PropertyDetails prop,Property property)
+        {
+            PropertyDetails propDet = await _propertyDetailsRepo.Get(property.PropertyDetails.Id);
+            if (propDet == null)
+            {
+                throw new NoPropertyException("Property Details not found");
+            }
+            propDet.NumberOfBedrooms = prop.NumberOfBedrooms;
+            propDet.NumberOfBathrooms = prop.NumberOfBathrooms;
+            propDet.AreaInSqFt = prop.AreaInSqFt;
+            propDet.PropertyDimensionsLength = prop.PropertyDimensionsLength;
+            propDet.PropertyDimensionsWidth = prop.PropertyDimensionsWidth;
+            propDet.CommercialAreaInSqFt = prop.CommercialAreaInSqFt;
+            propDet.WidthofFacingRoad = prop.WidthofFacingRoad;
+            propDet.PId = prop.PId;
+            return propDet;
+        }
+
     }
 }
 

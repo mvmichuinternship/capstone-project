@@ -71,7 +71,6 @@ C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\ne
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\Twilio.dll
-C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\serviceAccountKey.json
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\FirebaseAdmin.dll
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\Google.Api.Gax.dll
 C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\bin\Debug\net6.0\Google.Api.Gax.Rest.dll

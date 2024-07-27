@@ -12,8 +12,8 @@ using RealEstateAPI.Context;
 namespace RealEstateAPI.Migrations
 {
     [DbContext(typeof(RealEstateAppContext))]
-    [Migration("20240726084917_67acres")]
-    partial class _67acres
+    [Migration("20240726171651_real-estate-app")]
+    partial class realestateapp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

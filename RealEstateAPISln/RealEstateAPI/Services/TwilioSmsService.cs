@@ -6,9 +6,9 @@ namespace RealEstateAPI.Services
 {
     public class TwilioSmsService : ISmsService
     {
-        private readonly string _accountSid = "ACf5a9a2d946cef5088d494e7136ab1118";
-        private readonly string _authToken = "945fb6c3f661f20d717387c3fe8b10b4";
-        private readonly string _fromNumber = "+(888) 853-3993";
+        private readonly string _accountSid = "";
+        private readonly string _authToken = "";
+        private readonly string _fromNumber = "";
 
         public TwilioSmsService()
         {

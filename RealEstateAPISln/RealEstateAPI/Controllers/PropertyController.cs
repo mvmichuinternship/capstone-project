@@ -21,7 +21,7 @@ namespace RealEstateAPI.Controllers
             _propertyService = propertyService;
         }
 
-        [Authorize(Roles = "seller")]
+        //[Authorize(Roles = "seller")]
         [HttpPost("PostProperty")]
         [EnableCors]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
@@ -45,7 +45,7 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        [Authorize(Roles = "seller")]
+        //[Authorize(Roles = "seller")]
         [HttpPut("UpdateProperty")]
         [EnableCors]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
@@ -69,7 +69,7 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        [Authorize(Roles = "seller")]
+        //[Authorize(Roles = "seller")]
         [HttpDelete("DeleteProperty")]
         [EnableCors]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
@@ -93,7 +93,7 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        [Authorize(Roles = "seller,buyer")]
+        //[Authorize(Roles = "seller,buyer")]
         [HttpGet("GetProperty")]
         [EnableCors]
         [ProducesResponseType(typeof(GetPropertyDTO), StatusCodes.Status200OK)]
@@ -117,7 +117,7 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        [Authorize(Roles = "seller,buyer")]
+        //[Authorize(Roles = "seller,buyer")]
         [HttpGet("GetProperties")]
         [EnableCors]
         [ProducesResponseType(typeof(IList<GetPropertyDTO>), StatusCodes.Status200OK)]

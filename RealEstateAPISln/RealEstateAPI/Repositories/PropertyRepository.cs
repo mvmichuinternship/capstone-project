@@ -53,7 +53,10 @@ namespace RealEstateAPI.Repositories
         /// <returns>data of property</returns>
         public async Task<Property> Get(int key)
         {
-            return (await _realEstateAppContext.Properties.SingleOrDefaultAsync(u => u.PId == key)) ?? null;
+            return await _realEstateAppContext.Properties
+            .Include(p => p.PropertyDetails)
+            .Include(p => p.Media)
+            .FirstOrDefaultAsync(p => p.PId == key) ?? null;
         }
 
 

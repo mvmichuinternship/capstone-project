@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RealEstateAPI.Migrations
 {
-    public partial class _67acres : Migration
+    public partial class realestateapp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -122,7 +122,8 @@ namespace RealEstateAPI.Migrations
                         name: "FK_Medias_Properties_PropertyPId",
                         column: x => x.PropertyPId,
                         principalTable: "Properties",
-                        principalColumn: "PId");
+                        principalColumn: "PId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
