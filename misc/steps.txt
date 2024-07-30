@@ -8,3 +8,48 @@ Backend:
 	-> login with mobile
 	-> login with password
 --> token service
+
+-->Property.cs
+-->PropertyDetails.cs
+-->Media.cs
+--> property service
+	-> Post
+	-> Get by Id
+	-> Get all
+	-> Delete
+	-> Edit
+
+--> Choose plan service on user side
+--------------------------------------------------------------
+Frontend:
+
+--> Screens
+	-> Landing page
+	-> Register
+	-> Login with mobile/otp (state management)
+	-> View my properties (edit and del options)
+	-> Post property form (multiple image add)
+	-> Edit property form
+	-> View all properties (filter and search)
+	-> View single property by id ( seller and buyer->contact option)
+	-> Choose plan page
+--> Components
+	-> container
+	-> card
+	-> button(optional)
+	-> product card
+	-> sidebar
+	-> navbar
+
+-------------------------------------------------------------
+TODO:
+Backend:
+
+Blob for images
+azure sql server
+key vault
+deploy (docker, ci/cd, Kubernetes)
+
+Frontend:
+Send Email
+deploy (docker, ci/cd, Kubernetes)

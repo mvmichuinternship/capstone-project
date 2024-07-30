@@ -27,7 +27,7 @@ namespace RealEstateAPI.Controllers
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status400BadRequest)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<User>> Register(UserDTO userDTO)
+        public async Task<ActionResult<User>> Register([FromForm] UserDTO userDTO)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +52,7 @@ namespace RealEstateAPI.Controllers
         [ProducesResponseType(typeof(LoginTokenDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<LoginTokenDTO>> Login(PasswordDTO userLoginDTO)
+        public async Task<ActionResult<LoginTokenDTO>> Login([FromForm] PasswordDTO userLoginDTO)
         {
             if (ModelState.IsValid)
             {
@@ -97,10 +97,10 @@ namespace RealEstateAPI.Controllers
 
         [HttpPost("LoginViaOtp")]
         [EnableCors]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(LoginTokenDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<bool>> VerifyOtp(string phone, string otp)
+        public async Task<ActionResult<LoginTokenDTO>> VerifyOtp(string phone, string otp)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +131,31 @@ namespace RealEstateAPI.Controllers
                 try
                 {
                     var result = await _loginService.SwitchRole(userLoginDTO);
+                    return Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    //_logger.LogCritical("User not authenticated");
+                    return BadRequest(new ErrorModel(401, ex.Message));
+                }
+            }
+            return BadRequest("All details are not provided. Please check the object");
+        }
+
+
+        //[Authorize(Roles = "seller,buyer")]
+        [HttpPut("UpgradePlan")]
+        [EnableCors]
+        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
+        [ExcludeFromCodeCoverage]
+        public async Task<ActionResult<User>> UpgradePlan([FromForm]string email, bool upgradeplan)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var result = await _loginService.UpgradePlan(email,upgradeplan);
                     return Ok(result);
                 }
                 catch (Exception ex)

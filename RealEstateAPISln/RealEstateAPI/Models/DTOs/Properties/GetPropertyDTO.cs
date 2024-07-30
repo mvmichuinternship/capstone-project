@@ -8,6 +8,7 @@ namespace RealEstateAPI.Models.DTOs.Properties
         public int PId { get; set; }
         public string UserEmail { get; set; }
         public string Name { get; set; }
+        public string Phone { get; set; }
         public string PropertyType { get; set; }
         public PropertyDetails PropertyDetails { get; set; }
         public string? ResidentialSubtype { get; set; }

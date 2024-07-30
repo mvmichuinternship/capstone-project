@@ -27,7 +27,7 @@ namespace RealEstateAPI.Controllers
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<Property>> PostProperty(PostPropertyDTO postPropertyDTO)
+        public async Task<ActionResult<Property>> PostProperty([FromForm]PostPropertyDTO postPropertyDTO)
         {
             if (ModelState.IsValid)
             {
@@ -51,7 +51,7 @@ namespace RealEstateAPI.Controllers
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<Property>> UpdateProperty(PostPropertyDTO postPropertyDTO)
+        public async Task<ActionResult<Property>> UpdateProperty([FromForm]PostPropertyDTO postPropertyDTO)
         {
             if (ModelState.IsValid)
             {

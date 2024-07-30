@@ -7,9 +7,17 @@ namespace RealEstateAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Url { get; set; }
+
+        [NotMapped]
+        public IFormFile File { get; set; } 
+
+        public string? Url { get; set; } 
+
         public string Type { get; set; }
+
         [ForeignKey("Property")]
         public int PropertyPId { get; set; }
+
+        
     }
 }

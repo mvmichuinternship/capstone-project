@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Varela Round', 'sans-serif'], // Add your Google Font here
+      },
+    },
   },
   plugins: [],
 }

@@ -12,7 +12,7 @@ using RealEstateAPI.Context;
 namespace RealEstateAPI.Migrations
 {
     [DbContext(typeof(RealEstateAppContext))]
-    [Migration("20240726171651_real-estate-app")]
+    [Migration("20240730185825_real-estate-app")]
     partial class realestateapp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace RealEstateAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("PropertyPId")
+                    b.Property<int>("PropertyPId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -40,7 +40,6 @@ namespace RealEstateAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -83,6 +82,10 @@ namespace RealEstateAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -166,6 +169,13 @@ namespace RealEstateAPI.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Plan")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -194,6 +204,9 @@ namespace RealEstateAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Plan")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -207,7 +220,9 @@ namespace RealEstateAPI.Migrations
                 {
                     b.HasOne("RealEstateAPI.Models.Property", null)
                         .WithMany("Media")
-                        .HasForeignKey("PropertyPId");
+                        .HasForeignKey("PropertyPId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RealEstateAPI.Models.Property", b =>

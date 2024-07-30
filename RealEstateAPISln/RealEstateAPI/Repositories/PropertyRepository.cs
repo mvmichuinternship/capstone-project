@@ -66,7 +66,10 @@ namespace RealEstateAPI.Repositories
         /// <returns></returns>
         public async Task<IEnumerable<Property>> GetAll()
         {
-            return await _realEstateAppContext.Properties.ToListAsync();
+            return await _realEstateAppContext.Properties
+                    .Include(p => p.Media)
+                    .Include(p => p.PropertyDetails)
+                    .ToListAsync();
         }
 
         /// <summary>

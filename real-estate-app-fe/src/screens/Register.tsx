@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Container from "../components/Container.tsx";
 import Card from "../components/Card.tsx";
 import Button from "../components/Button.tsx";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
+
+  const navigate = useNavigate()
+
   const [userData, setUserData] = useState({
     UserEmail: "",
     Name: "",
@@ -99,20 +104,21 @@ const Register = () => {
     formData.append("Role", userData.Role);
     formData.append("Password", userData.Password);
 
-    // try {
-    //   const response = await fetch("", {
-    //     method: "POST",
-    //     body: formData,
-    //   });
+    try {
+      const response = await fetch("http://localhost:5189/api/Login/Register", {
+        method: "POST",
+        body: formData,
+      });
 
-    //   if (response.ok) {
-    //     console.log("Property and image uploaded successfully");
-    //   } else {
-    //     console.log("Upload failed");
-    //   }
-    // } catch (error) {
-    //   console.error("Error uploading property:", error);
-    // }
+      if (response.ok) {
+        console.log("Property uploaded successfully");
+        navigate('/login');
+      } else {
+        console.log("Upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading property:", error);
+    }
     console.log(userData)
   };
 
@@ -195,8 +201,8 @@ const Register = () => {
           value={userData.Role}
         >
           <option value="">Select Role</option>
-          <option value="Seller">Seller</option>
-          <option value="Buyer">Buyer</option>
+          <option value="seller">Seller</option>
+          <option value="buyer">Buyer</option>
         </select>
         <span className="text-xs self-start w-full text-red-500">{roleError}</span>
         <Button onClick={handleSubmit} title="Register" />

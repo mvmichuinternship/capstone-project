@@ -19,10 +19,11 @@ namespace RealEstateAPI.Services
         private readonly IRepository<string, TokenData> _tokenRepo;
         private readonly OTPRepository _otpRepository;
         private readonly UserRepository _userRepository;
+        private readonly TokenRepository _tokenRepository;
         private readonly ISmsService _smsService;
         private readonly ITokenService _tokenService;
 
-        public LoginService(IRepository<string, User> userRepo, IRepository<string, TokenData> tokenRepo, ITokenService tokenService, OTPRepository otpRepository, ISmsService smsService, UserRepository userRepository)
+        public LoginService(IRepository<string, User> userRepo, TokenRepository tokenRepository, IRepository<string, TokenData> tokenRepo, ITokenService tokenService, OTPRepository otpRepository, ISmsService smsService, UserRepository userRepository)
         {
             _userRepo = userRepo;
             _tokenRepo = tokenRepo;
@@ -30,6 +31,7 @@ namespace RealEstateAPI.Services
             _otpRepository = otpRepository;
             _smsService = smsService;
             _userRepository = userRepository;
+            _tokenRepository = tokenRepository;
         }
 
         /// <summary>
@@ -103,6 +105,8 @@ namespace RealEstateAPI.Services
             LoginTokenDTO returnDTO = new LoginTokenDTO();
             returnDTO.Email = user.UserEmail;
             returnDTO.Role = user.Role;
+            returnDTO.Phone= user.Phone;
+            returnDTO.Plan= user.Plan;
             returnDTO.Token = _tokenService.GenerateToken(user);
             return returnDTO;
         }
@@ -165,6 +169,8 @@ namespace RealEstateAPI.Services
             TokenData tokenData = new TokenData();
             tokenData.UserEmail=userDTO.UserEmail;
             tokenData.Role=userDTO.Role;
+            tokenData.Phone=userDTO.Phone;
+            tokenData.Plan=userDTO.Plan;
             HMACSHA512 hMACSHA = new HMACSHA512();
             tokenData.PasswordKey= hMACSHA.Key;
             tokenData.Password= hMACSHA.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password));
@@ -178,22 +184,22 @@ namespace RealEstateAPI.Services
         /// <param name="phoneNumber"></param>
         /// <param name="otp"></param>
         /// <returns></returns>
-        public async Task<bool> VerifyOTP(string phoneNumber, string otp)
+        public async Task<LoginTokenDTO> VerifyOTP(string phoneNumber, string otp)
         {
             var otpRecord =await  _otpRepository.GetByPhoneNumber(phoneNumber);
-            //FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance
-            //    .VerifyIdTokenAsync(otpRecord.Otp);
+            var user = await _tokenRepository.GetByPhoneNumber(phoneNumber);
 
-            //// Token is valid
-            //string uid = decodedToken.Uid;
+          
 
-            if (otpRecord != null && otpRecord.Otp == otp && DateTime.UtcNow < otpRecord.Expiration)
+            if (user!=null && otpRecord != null && otpRecord.Otp == otp && DateTime.UtcNow < otpRecord.Expiration)
             {
-                _otpRepository.Remove(otpRecord); 
-                return true;
+                LoginTokenDTO loginReturnDTO = MapEmployeeToLoginReturn(user);
+                _otpRepository.Remove(otpRecord);
+
+                return loginReturnDTO;
             }
 
-            return false;
+           throw new NoUserException("Invalid Otp");
         }
 
         /// <summary>
@@ -225,6 +231,42 @@ namespace RealEstateAPI.Services
                 throw new NoUserException("No user with that email");
             }
 
+        }
+        /// <summary>
+        /// Upgrade plan from basic to premium
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="upgradePlan"></param>
+        /// <returns></returns>
+        /// <exception cref="NoUserException"></exception>
+        public async Task<User> UpgradePlan(string email, bool upgradePlan)
+        {
+            try
+            {
+                User user=null;
+                user = await _userRepo.Get(email);
+                if (user != null)
+                {
+                    if (upgradePlan)
+                    {
+                        user.Plan = "Premium";
+                        await _userRepo.Update(user);
+
+                    }
+                    else
+                    {
+                        user.Plan = "Basic";
+                        await _userRepo.Update(user);
+                    }
+                    
+                }
+                return user;
+
+            }
+            catch (Exception ex)
+            {
+                throw new NoUserException("User not found");
+            }
         }
     }
 }

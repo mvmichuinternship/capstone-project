@@ -9,6 +9,6 @@ namespace RealEstateAPI.Interfaces
         Task<Property> UpdateProperty(PostPropertyDTO property);
         Task<Property> RemoveProperty(int id);
         Task<GetPropertyDTO> GetPropertyById(int id);
-        Task<IEnumerable<GetPropertyDTO>> GetAllProperties();
+        Task<IList<GetPropertyDTO>> GetAllProperties();
     }
 }

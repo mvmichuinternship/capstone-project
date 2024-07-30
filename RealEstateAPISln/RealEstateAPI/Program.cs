@@ -91,6 +91,7 @@ namespace RealEstateAPI
             builder.Services.AddScoped<IRepository<int, Media>, MediaRepository>();
             builder.Services.AddScoped<OTPRepository>();
             builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<TokenRepository>();
             #endregion
 
             #region services

@@ -32,7 +32,8 @@ VAc8bf829659b54459afd48ce4b2cffef2
 {
   "userEmail": "mv@gmail.com",
   "name": "mv",
-  "propertyType": 0,
+"phone":"7338985215",
+  "propertyType": "Residential",
   "propertyDetails": {
     "numberOfBedrooms": 3,
     "numberOfBathrooms": 2,
@@ -43,7 +44,7 @@ VAc8bf829659b54459afd48ce4b2cffef2
     "widthofFacingRoad": null,
     "commercialAreaInSqFt": null
     },
-  "residentialSubtype": 0,
+  "residentialSubtype": "Villa",
   "commercialSubtype": null,
   "location": "chennai, Tamil nadu, India",
   "media": [
@@ -65,6 +66,7 @@ VAc8bf829659b54459afd48ce4b2cffef2
 {
   "userEmail": "mv@gmail.com",
   "name": "mv",
+"phone":"7338985215",
   "propertyType": "Commercial",
   "propertyDetails": {
     "propertyDimensionsWidth": 150,
@@ -107,3 +109,55 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8
 Buyer
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ2a0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJidXllciIsImV4cCI6MTcyMjE2MzU0OH0.PUfg5Ig0Bi9vRTKFisiMrU2S92-Cj2k0q5un7fBGR48
 
+
+
+private async Task<PropertyDetails> MapToPD(PropertyDetails propertyDTO)
+{
+PropertyDetails propDet = new PropertyDetails();
+propDet.NumberOfBedrooms= prop.PropertyDetails.NumberOfBedrooms;
+propDet.NumberOfBathrooms = prop.PropertyDetails.NumberOfBathrooms;
+propDet.AreaInSqFt = prop.PropertyDetails.AreaInSqFt;
+propDet.PropertyDimensionsLength= prop.PropertyDetails.PropertyDimensionsLength ;
+propDet.PropertyDimensionsWidth= prop.PropertyDetails.PropertyDimensionsWidth ;
+propDet.CommercialAreaInSqFt= prop.PropertyDetails.CommercialAreaInSqFt ;
+propDet.WidthofFacingRoad= prop.PropertyDetails.WidthofFacingRoad ;
+propDet.PId = prop.PId;
+return propDet;
+}
+
+pd = await MapToPD(property.PropertyDetails);
+
+
+
+{
+"pId":2,
+  "userEmail": "mv@gmail.com",
+  "name": "mv",
+  "propertyType": "Residential",
+  "propertyDetails": {
+    "numberOfBedrooms": 3,
+    "numberOfBathrooms": 2,
+    "areaInSqFt": 4300,
+    "propertyDimensionsWidth": null,
+    "propertyDimensionsLength": null,
+    "hasConstructions": null,
+    "widthofFacingRoad": null,
+    "commercialAreaInSqFt": null
+    },
+  "residentialSubtype": "Villa",
+  "commercialSubtype": null,
+  "location": "chennai, Tamil nadu, India",
+  "media": [
+    {
+      
+      "url": "pic1.jpeg",
+      "type": "image"
+    },
+ {
+      
+      "url": "video.mp4",
+      "type": "video"
+    }
+  ],
+  "price": 10000
+}

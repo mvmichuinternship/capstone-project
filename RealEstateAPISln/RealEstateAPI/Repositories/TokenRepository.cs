@@ -57,6 +57,11 @@ namespace RealEstateAPI.Repositories
             return (await _realEstateAppContext.TokenData.SingleOrDefaultAsync(u => u.UserEmail == key)) ?? null;
         }
 
+        public async Task<TokenData> GetByPhoneNumber(string phoneNumber)
+        {
+            return await _realEstateAppContext.TokenData.SingleOrDefaultAsync(o => o.Phone == phoneNumber);
+        }
+
         /// <summary>
         /// Returns list of all users passwords from db
         /// </summary>

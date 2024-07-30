@@ -50,7 +50,8 @@ namespace RealEstateAPI.Migrations
                     UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Plan = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,6 +65,7 @@ namespace RealEstateAPI.Migrations
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PropertyType = table.Column<int>(type: "int", nullable: false),
                     PropertyDetailsId = table.Column<int>(type: "int", nullable: false),
@@ -90,9 +92,11 @@ namespace RealEstateAPI.Migrations
                     Tid = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserEmail = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordKey = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Plan = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,9 +115,9 @@ namespace RealEstateAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PropertyPId = table.Column<int>(type: "int", nullable: true)
+                    PropertyPId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

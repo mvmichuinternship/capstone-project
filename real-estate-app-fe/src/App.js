@@ -3,8 +3,16 @@ import './App.css';
 import Container from './components/Container.tsx';
 // import Button from './components/Button.tsx';
 import Register from './screens/Register.tsx';
+import PostProperty from './screens/PostProperty.tsx';
 import propertyData from './data/propertyData.ts';
 import PropertyCard from './components/Property-card.tsx';
+import ViewProperty from './screens/ViewProperty.tsx';
+import MyProperties from './screens/MyProperties.tsx';
+import Landing from './screens/Landing.tsx';
+import Login from './screens/Login.tsx'
+import SingleProperty from './screens/SingleProperty.tsx';
+import NoPage from './screens/NoPage.tsx';
+import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
@@ -16,13 +24,28 @@ function App() {
       <div>hello world</div>
       <Button title='click' onClick={() => console.log("first")} />
     </Card> */}
-    <Register/>
+    {/* <Register/> */}
+        {/* <PostProperty/> */}
+        {/* <ViewProperty/> */}
+        <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/post-property" element={<PostProperty />} />
+          <Route path="/view-properties" element={<ViewProperty />} />
+          <Route path="/my-properties" element={<MyProperties />} />
+          <Route path="/view-property/:pid" element={<SingleProperty />} />
+          <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
     </Container>
-    <PropertyCard propertyData = {propertyData} />
+   
      
 
     </div>
   );
 }
+
 
 export default App;

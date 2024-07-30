@@ -87,6 +87,7 @@ namespace RealEstateAPI.Services
             getPropertyDTO.PropertyDetails = await _propertyDetailsRepo.Add(property.PropertyDetails);
             getPropertyDTO.UserEmail = property.UserEmail;
             getPropertyDTO.Price = property.Price;
+            getPropertyDTO.Phone = property.Phone;
             getPropertyDTO.CommercialSubtype = property.CommercialSubtype == null ? null : (CommercialSubtype)Enum.Parse(typeof(CommercialSubtype), property.CommercialSubtype);
             getPropertyDTO.Name = property.Name;
             getPropertyDTO.Location = property.Location;
@@ -105,7 +106,7 @@ namespace RealEstateAPI.Services
             return media;
         }
 
-        public async Task<IEnumerable<GetPropertyDTO>> GetAllProperties()
+        public async Task<IList<GetPropertyDTO>> GetAllProperties()
         {
             GetPropertyDTO getPropertyDTO = null;
             IList<GetPropertyDTO> properties = new List<GetPropertyDTO>();
@@ -119,6 +120,7 @@ namespace RealEstateAPI.Services
                 getPropertyDTO.PropertyDetails = item.PropertyDetails;
                 getPropertyDTO.UserEmail = item.UserEmail;
                 getPropertyDTO.PId = item.PId;
+                getPropertyDTO.Phone = item.Phone;
                 getPropertyDTO.Price = item.Price;
                 getPropertyDTO.CommercialSubtype = item.CommercialSubtype.ToString();
                 getPropertyDTO.Name = item.Name;
@@ -147,6 +149,7 @@ namespace RealEstateAPI.Services
                 getPropertyDTO.PropertyDetails = property.PropertyDetails;
                 getPropertyDTO.UserEmail = property.UserEmail;
                 getPropertyDTO.PId = property.PId;
+                getPropertyDTO.Phone = property.Phone;
                 getPropertyDTO.Price = property.Price;
                 getPropertyDTO.CommercialSubtype= property.CommercialSubtype.ToString();
                 getPropertyDTO.Name = property.Name;
@@ -258,6 +261,7 @@ namespace RealEstateAPI.Services
                 getPropertyDTO.Price = propertyDto.Price;
                 getPropertyDTO.CommercialSubtype = propertyDto.CommercialSubtype == null ? null : (CommercialSubtype)Enum.Parse(typeof(CommercialSubtype), propertyDto.CommercialSubtype);
                 getPropertyDTO.Name = propertyDto.Name;
+                getPropertyDTO.Phone = propertyDto.Phone;
                 getPropertyDTO.PId = propertyDto.PId;
                 getPropertyDTO.Location = propertyDto.Location;
                 getPropertyDTO.ResidentialSubtype = propertyDto.ResidentialSubtype == null ? null : (ResidentialSubtype)Enum.Parse(typeof(ResidentialSubtype), propertyDto.ResidentialSubtype);
