@@ -11,6 +11,6 @@ namespace RealEstateAPI.Interfaces
         Task<LoginTokenDTO> VerifyOTP(string phoneNumber, string otp);
         Task<LoginTokenDTO> LoginPassword(PasswordDTO passwordDTO);
         Task<LoginTokenDTO> SwitchRole(LoginTokenDTO loginTokenDTO); 
-        Task<User> UpgradePlan(string email, bool upradePlan);
+        Task<LoginTokenDTO> UpgradePlan(string email, bool upradePlan);
     }
 }

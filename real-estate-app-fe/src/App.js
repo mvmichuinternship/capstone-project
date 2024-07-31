@@ -13,21 +13,27 @@ import Login from './screens/Login.tsx'
 import SingleProperty from './screens/SingleProperty.tsx';
 import NoPage from './screens/NoPage.tsx';
 import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
+import Sidebar from './components/Sidebar.tsx';
+import UpgradePlan from './screens/UpgradePlan.tsx';
+import SwitchRole from './screens/SwitchRoles.tsx';
+import EditProperty from './screens/EditProperty.tsx';
 
 function App() {
   return (
-    <div className="App">
-      <Container className='h-screen'> 
+    <div className="App h-screen">
       {/* <Card className='border border-blue-500'>
       <div>hello world</div>
       <div>hello world</div>
       <div>hello world</div>
       <Button title='click' onClick={() => console.log("first")} />
-    </Card> */}
+      </Card> */}
     {/* <Register/> */}
         {/* <PostProperty/> */}
         {/* <ViewProperty/> */}
         <BrowserRouter>
+        <div className='flex h-full overflow-auto '>
+        <Sidebar/>
+      <Container className='pl-[10%]'> 
       <Routes>
         <Route path="/" element={<Landing />} />
           <Route path="/register" element={<Register />} />
@@ -36,10 +42,14 @@ function App() {
           <Route path="/view-properties" element={<ViewProperty />} />
           <Route path="/my-properties" element={<MyProperties />} />
           <Route path="/view-property/:pid" element={<SingleProperty />} />
+          <Route path="/edit-property/:pid" element={<EditProperty />} />
+          <Route path="/upgrade" element={<UpgradePlan />} />
+          <Route path="/switch-roles" element={<SwitchRole />} />
           <Route path="*" element={<NoPage />} />
       </Routes>
-    </BrowserRouter>
     </Container>
+    </div>
+    </BrowserRouter>
    
      
 

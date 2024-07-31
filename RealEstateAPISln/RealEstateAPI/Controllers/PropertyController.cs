@@ -15,15 +15,18 @@ namespace RealEstateAPI.Controllers
     public class PropertyController : ControllerBase
     {
         private readonly IPropertyService _propertyService;
+        private readonly IBlobService _blobServices;
 
-        public PropertyController(IPropertyService propertyService)
+
+        public PropertyController(IPropertyService propertyService, IBlobService blobService)
         {
             _propertyService = propertyService;
+            _blobServices = blobService;
         }
 
-        //[Authorize(Roles = "seller")]
+        [Authorize(Roles = "seller")]
         [HttpPost("PostProperty")]
-        [EnableCors]
+        [EnableCors("MyCors")]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
@@ -33,6 +36,16 @@ namespace RealEstateAPI.Controllers
             {
                 try
                 {
+                    foreach (var item in postPropertyDTO.Media)
+                    {
+                        
+                    if (item.File != null && item.File.Length > 0)
+                    {
+                        string imageUrl = await _blobServices.UploadFileAsync(item.File);
+                        item.Url = imageUrl;
+                    }
+                    }
+
                     var result = await _propertyService.AddNewProperty(postPropertyDTO);
                     return Ok(result);
                 }
@@ -45,9 +58,9 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        //[Authorize(Roles = "seller")]
+        [Authorize(Roles = "seller")]
         [HttpPut("UpdateProperty")]
-        [EnableCors]
+        [EnableCors("MyCors")]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
@@ -57,6 +70,15 @@ namespace RealEstateAPI.Controllers
             {
                 try
                 {
+                    foreach (var item in postPropertyDTO.Media)
+                    {
+
+                        if (item.File != null && item.File.Length > 0)
+                        {
+                            string imageUrl = await _blobServices.UploadFileAsync(item.File);
+                            item.Url = imageUrl;
+                        }
+                    }
                     var result = await _propertyService.UpdateProperty(postPropertyDTO);
                     return Ok(result);
                 }
@@ -69,9 +91,9 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        //[Authorize(Roles = "seller")]
+        [Authorize(Roles = "seller")]
         [HttpDelete("DeleteProperty")]
-        [EnableCors]
+        [EnableCors("MyCors")]
         [ProducesResponseType(typeof(Property), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
@@ -93,9 +115,9 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        //[Authorize(Roles = "seller,buyer")]
+        [Authorize(Roles = "seller,buyer")]
         [HttpGet("GetProperty")]
-        [EnableCors]
+        [EnableCors("MyCors")]
         [ProducesResponseType(typeof(GetPropertyDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
@@ -117,9 +139,9 @@ namespace RealEstateAPI.Controllers
             return BadRequest("All details are not provided. Please check the object");
         }
 
-        //[Authorize(Roles = "seller,buyer")]
+        [Authorize(Roles = "seller,buyer")]
         [HttpGet("GetProperties")]
-        [EnableCors]
+        [EnableCors("MyCors")]
         [ProducesResponseType(typeof(IList<GetPropertyDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]

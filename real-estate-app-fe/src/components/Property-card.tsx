@@ -8,7 +8,7 @@ const PropertyCard = ({ propertyData, className }: { propertyData: any, classNam
 
   return (
     <Link to={`http://localhost:3000/view-property/${propertyData.pId}`} >
-    <div className={cn('w-full max-w-sm shadow-xl rounded-xl m-2 p-4 flex flex-col bg-white', className)}>
+    <div className={cn('w-64 max-w-sm shadow-xl rounded-xl m-2 p-4 flex flex-col bg-white', className)}>
       <div className='w-full h-48 overflow-hidden rounded-t-lg'>
         <img
           src={`/${propertyData?.media[0].url}`}
@@ -17,7 +17,7 @@ const PropertyCard = ({ propertyData, className }: { propertyData: any, classNam
           onError={(e) => { e.currentTarget.src = '/placeholder.jpg'; }} 
         />
       </div>
-      <div className='w-full flex flex-col p-4'>
+      <div className='w-full flex flex-col p-2'>
         <div className='flex justify-between mb-2'>
           <span className='text-lg font-bold'>{propertyData.name}</span>
           <span className='text-lg font-bold'>${propertyData.price}</span>

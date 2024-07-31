@@ -7,24 +7,8 @@ const ViewProperty = () => {
   const [properties, setProperties] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [role, setRole] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const propertiesRef:any = useRef([]);
-  
-
-  useEffect(() => {
-    fetch('http://localhost:5189/api/Property/GetProperties')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProperties(data);
-      });
-  }, []);
-
-  // useEffect(() => {
-  //   console.log(properties);
-  // }, [properties]);
-
+ 
+ 
   useEffect(() => {
     var res = localStorage.getItem("loginData")
           if(res){
@@ -45,58 +29,37 @@ const ViewProperty = () => {
           }
   }, []);
 
-  
-    // const fetchProperties = async () => {
-    //   try {
-    //     const response = await fetch("http://localhost:5189/api/Property/GetProperties", {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
-
-    //     if (!response.ok) {
-    //       throw new Error("Failed to fetch properties.");
-    //     }
-
-    //     const data = await response.json();
-    //     console.log("Fetched data:", data);
-    //     if(Array.isArray(data)){
-    //     //   properties.push(data[0]);
-    //     // setProperties(prevProperties => {
-    //     //     const updatedProperties:any = [...prevProperties];
-    //     //     updatedProperties.push(...data);
-    //     //     return updatedProperties;
-    //     // });          
-    //     properties.push(...data);
-    //     console.log("if")
-    //     } 
-    //     else{
-    //       console.log("first");
-    //     }
-    //     console.log(properties)
-    //   } catch (error) {
-    //     setError(error.message);
-    //   } 
-    // // const response = await fetch('http://localhost:5189/api/Property/GetProperties');
-    // // const json = await response.json();
-    // // setProperties(json);
-    // // console.log(properties)
-    // };
-    
+  useEffect(() => {
+    var res=localStorage.getItem("loginData");
+    if(res)
+      var token = JSON.parse(res)?.token
+    fetch('http://localhost:5189/api/Property/GetProperties',{
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer "+token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProperties(data);
+      });
+  }, []);
 
   // useEffect(() => {
-  //   fetchProperties();
-  // }, []);
-  
-  return (loggedIn && role==="buyer"&&(<div className=" flex justify-between">
-    {properties?.map((property:any, i:any)=>(
-      <div key={i} className="flex flex-wrap space-x-2 space-y-2">
-        <PropertyCard propertyData={property}/>
-      </div>
+  //   console.log(properties);
+  // }, [properties]);
 
-    ))}
-  </div>));
+  
+  return (loggedIn && role === "buyer" && (
+    <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
+      {properties.map((property: any, i: number) => (
+        <div key={i} >
+          <PropertyCard propertyData={property} />
+        </div>
+      ))}
+    </div>
+  ));
 };
 
 export default ViewProperty;

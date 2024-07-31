@@ -10,13 +10,35 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Identity;
+using Azure.Storage.Blobs;
 
 
 namespace RealEstateAPI
 {
     public class Program
     {
-        public static void Main(string[] args)
+        private static async Task<string> GetSqlCs()
+        {
+            const string secretName = "mv-67acres-sql-cs";
+            var keyVaultName = "mv-67acres-connection-string";
+            var kvUri = $"https://{keyVaultName}.vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync(secretName);
+            return secret.Value.Value;
+        }
+
+        private static async Task<string> GetBlobCs()
+        {
+            const string secretName = "mv-67acres-blob-cs";
+            var keyVaultName = "mv-67acres-connection-string";
+            var kvUri = $"https://{keyVaultName}.vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync(secretName);
+            return secret.Value.Value;
+        }
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -72,7 +94,7 @@ namespace RealEstateAPI
             {
                 opts.AddPolicy("MyCors", options =>
                 {
-                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithHeaders("Authorization"); ;
                 });
             });
             #endregion
@@ -81,6 +103,12 @@ namespace RealEstateAPI
             builder.Services.AddDbContext<RealEstateAppContext>(
                options => options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))
                );
+
+            //var defaultConnection = await GetSqlCs();
+
+            //builder.Services.AddDbContext<RealEstateAppContext>(
+            //    options => options.UseSqlServer(defaultConnection)
+            //    );
             #endregion
 
             #region repositories
@@ -99,14 +127,13 @@ namespace RealEstateAPI
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<ISmsService, TwilioSmsService>();
             builder.Services.AddScoped<IPropertyService, PropertyService>();
+            builder.Services.AddScoped<IBlobService, BlobStorageService>();
+
+            var blobcs = await GetBlobCs();
+            builder.Services.AddSingleton(x => new BlobServiceClient(blobcs));
             #endregion
 
-            //#region firebase
-            //builder.Services.AddSingleton(FirebaseApp.Create(new AppOptions()
-            //{
-            //    Credential = GoogleCredential.FromFile("C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\serviceAccountKey.json"),
-            //}));
-            //#endregion
+
 
 
             var app = builder.Build();
@@ -119,9 +146,9 @@ namespace RealEstateAPI
             }
 
             app.UseAuthentication();
+            app.UseCors("MyCors");
             app.UseAuthorization();
 
-            app.UseCors("MyCors");
 
             app.MapControllers();
 

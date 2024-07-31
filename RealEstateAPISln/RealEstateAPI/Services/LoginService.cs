@@ -223,6 +223,8 @@ namespace RealEstateAPI.Services
                     res.Token = _tokenService.GenerateToken(td);
                     res.Email = td.UserEmail;
                     res.Role = td.Role;
+                    res.Plan = td.Plan;
+                    res.Phone = td.Phone;
                 }
                 return res;
             }
@@ -239,28 +241,43 @@ namespace RealEstateAPI.Services
         /// <param name="upgradePlan"></param>
         /// <returns></returns>
         /// <exception cref="NoUserException"></exception>
-        public async Task<User> UpgradePlan(string email, bool upgradePlan)
+        public async Task<LoginTokenDTO> UpgradePlan(string email, bool upgradePlan)
         {
             try
             {
                 User user=null;
+                User user2=null ;
                 user = await _userRepo.Get(email);
                 if (user != null)
                 {
                     if (upgradePlan)
                     {
                         user.Plan = "Premium";
-                        await _userRepo.Update(user);
+                        user2 =await _userRepo.Update(user);
 
                     }
                     else
                     {
                         user.Plan = "Basic";
-                        await _userRepo.Update(user);
+                        user2 = await _userRepo.Update(user);
                     }
                     
                 }
-                return user;
+                var userDB = await _tokenRepo.Get(email);
+                userDB.Plan= user2?.Plan;
+                var tokenddata = await _tokenRepo.Update(userDB);
+                LoginTokenDTO res = new LoginTokenDTO();
+                if (userDB != null)
+                {
+                    
+                    var td = await _tokenRepo.Get(email);
+                    res.Token = _tokenService.GenerateToken(td);
+                    res.Email = td.UserEmail;
+                    res.Role = td.Role;
+                    res.Plan = td.Plan;
+                    res.Phone = td.Phone;
+                }
+                return res;
 
             }
             catch (Exception ex)

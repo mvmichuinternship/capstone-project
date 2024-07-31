@@ -143,7 +143,7 @@ namespace RealEstateAPI.Controllers
         }
 
 
-        //[Authorize(Roles = "seller,buyer")]
+        [Authorize(Roles = "seller,buyer")]
         [HttpPut("UpgradePlan")]
         [EnableCors]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]

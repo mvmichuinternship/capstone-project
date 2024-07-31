@@ -107,7 +107,30 @@ const navigate = useNavigate();
       }));
     }
   };
+  
+  useEffect(() => {
+    var res = localStorage.getItem("loginData")
+          if(res){
 
+            if(JSON.parse(res)?.email && JSON.parse(res)?.role==="seller"){
+
+              setLoggedIn(true)
+              setRole("seller")
+            }
+            else if(JSON.parse(res)?.email && JSON.parse(res)?.role==="buyer")
+              {
+                setLoggedIn(false)
+                setRole("buyer")
+                navigate('/view-properties')
+              }
+              else{
+                navigate('/login')
+              }
+            }
+            else{
+              navigate('/login')
+            }
+          }, [loggedIn, role, navigate]);
   
 
   const handleSubmit = async (e) => {
@@ -146,15 +169,21 @@ const navigate = useNavigate();
       formData.append(`media[${index}].url`, item.url);
       formData.append(`media[${index}].type`, item.type);
     });
-  
+    var res=localStorage.getItem("loginData");
+    if(res)
+      var token = JSON.parse(res)?.token
     try {
       const response = await fetch("http://localhost:5189/api/Property/PostProperty", {
         method: "POST",
+        headers: {
+          "Authorization": "Bearer "+token,
+        },
         body: formData,
       });
   
       if (response.ok) {
         console.log("Property posted successfully!");
+        navigate('/my-properties')
       } else {
         console.error("Failed to post property.");
         const errorText = await response.text();
@@ -166,34 +195,11 @@ const navigate = useNavigate();
   };
   
 
-  useEffect(() => {
-    var res = localStorage.getItem("loginData")
-          if(res){
-
-            if(JSON.parse(res)?.email && JSON.parse(res)?.role==="seller"){
-
-              setLoggedIn(true)
-              setRole("seller")
-            }
-            else if(JSON.parse(res)?.email && JSON.parse(res)?.role==="buyer")
-              {
-                setLoggedIn(false)
-                setRole("buyer")
-                navigate('/view-properties')
-              }
-              else{
-                navigate('/login')
-              }
-            }
-            else{
-              navigate('/login')
-            }
-          }, []);
 
   return (
     (loggedIn&&role==="seller"&&(
     <Container>
-      <Card className="space-y-4 w-[50%]">
+      <Card className="space-y-4 sm:w-[50%]">
         <span className="text-2xl">Post Property</span>
         <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2 ">
           <div className=" flex flex-col justify-center items-start">
@@ -573,10 +579,24 @@ const navigate = useNavigate();
               type="file"
               id="media"
               name="media"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpeg, video/mp4"
               multiple
               onChange={handleMediaChange}
             />
+            <div className="mt-2">
+               
+                {userData.media &&
+                  userData.media.length > 0 &&
+                  userData.media.map((file, index) => (
+                    <div key={index} className="mb-2">
+                      <img
+                        src={URL.createObjectURL(file.filedata)}
+                        alt={`New Media ${index}`}
+                        style={{ maxWidth: "200px", maxHeight: "200px" }}
+                      />
+                    </div>
+                  ))}
+              </div>
           </div>
         </div>
         <div className="flex justify-center w-full space-x-2">
