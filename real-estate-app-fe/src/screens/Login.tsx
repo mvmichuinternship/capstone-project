@@ -291,6 +291,7 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Login successful", response);
+        window.location.reload()
         localStorage.setItem("loginData", JSON.stringify(data));
         var res = localStorage.getItem("loginData")
           if(res){
@@ -327,8 +328,8 @@ const Login = () => {
   }, []);
 
   return (
-    <Container>
-      <Card className="w-[40%]">
+    <Container >
+      <Card className="sm:w-[40%]">
         <span className="text-2xl">Login</span>
 
         <div className="py-2 space-y-2 ">

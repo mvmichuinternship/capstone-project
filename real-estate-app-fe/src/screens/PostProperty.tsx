@@ -198,7 +198,7 @@ const navigate = useNavigate();
 
   return (
     (loggedIn&&role==="seller"&&(
-    <Container>
+    <Container className="">
       <Card className="space-y-4 sm:w-[50%]">
         <span className="text-2xl">Post Property</span>
         <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2 ">

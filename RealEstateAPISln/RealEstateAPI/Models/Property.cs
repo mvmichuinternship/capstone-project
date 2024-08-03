@@ -2,10 +2,12 @@
 using RealEstateAPI.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using Twilio.TwiML.Messaging;
 
 namespace RealEstateAPI.Models
 {
+    [ExcludeFromCodeCoverage]
     public class Property
     {
         [Key]

@@ -8,18 +8,35 @@ const PropertyCard = ({ propertyData, className }: { propertyData: any, classNam
 
   return (
     <Link to={`http://localhost:3000/view-property/${propertyData.pId}`} >
-    <div className={cn('w-64 max-w-sm shadow-xl rounded-xl m-2 p-4 flex flex-col bg-white', className)}>
+    <div className={cn('w-64 max-w-sm shadow-xl h-96 rounded-xl m-2 p-4 flex flex-col bg-white', className)}>
       <div className='w-full h-48 overflow-hidden rounded-t-lg'>
-        <img
-          src={`/${propertyData?.media[0].url}`}
+      {propertyData?.media?.map((mediaItem: any, index: number) => (
+                  <div key={index} className="mb-4">
+                    {mediaItem.type === "image/jpeg" || mediaItem.type ==="image/png" ? (
+                      <img
+                        src={mediaItem.url}
+                        alt={`media-${index}`}
+                        className="w-full h-56 object-cover rounded-lg"
+                      />
+                    ) : (
+                      <video
+                        src={mediaItem.url}
+                        controls
+                        className="w-full h-56 object-fill rounded-lg"
+                      />
+                    )}
+                  </div>
+                ))}
+     {/* <img
+          src={`${propertyData?.media[0].url}`}
           alt={propertyData.name}
           className="w-full h-full object-cover"
           onError={(e) => { e.currentTarget.src = '/placeholder.jpg'; }} 
-        />
+        /> */}
       </div>
-      <div className='w-full flex flex-col p-2'>
-        <div className='flex justify-between mb-2'>
-          <span className='text-lg font-bold'>{propertyData.name}</span>
+      <div className='w-full flex flex-col sm:p-2'>
+        <div className='flex justify-between mb-2 gap-x-2'>
+          <span className='text-lg md:text-nowrap font-bold'>{propertyData.name}</span>
           <span className='text-lg font-bold'>${propertyData.price}</span>
         </div>
         <div className='mb-2'>

@@ -2,6 +2,7 @@
 
 namespace RealEstateAPI.Models.DTOs.Login
 {
+    [ExcludeFromCodeCoverage]
     public class LoginTokenDTO
     {
         public string Email { get; set; }

@@ -1,0 +1,44 @@
+name: dockercompose8854914450687289516
+services:
+  realestateapi:
+    build:
+      context: C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln
+      dockerfile: RealEstateAPI/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: realestateapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  realestateappfe:
+    build:
+      context: C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    image: realestateappfe
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+  sqlserver:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: YourStrong@Passw0rd
+    image: mcr.microsoft.com/mssql/server
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+networks:
+  default:
+    name: dockercompose8854914450687289516_default

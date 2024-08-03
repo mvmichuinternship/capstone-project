@@ -1,5 +1,8 @@
-﻿namespace RealEstateAPI.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace RealEstateAPI.Models
 {
+    [ExcludeFromCodeCoverage]
     public class ErrorModel
     {
         int ErrorCode { get; set; }

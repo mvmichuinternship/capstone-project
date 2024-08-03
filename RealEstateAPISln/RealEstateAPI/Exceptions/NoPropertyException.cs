@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 
 namespace RealEstateAPI.Exceptions
 {
+    [ExcludeFromCodeCoverage]
     public class NoPropertyException: Exception
     {
         string msg;

@@ -65,23 +65,30 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faEye, faPlusCircle, faUser, faSignOutAlt, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+
+  const navigate = useNavigate()
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [role, setRole] = useState("");
 
   useEffect(() => {
     const loginData = localStorage.getItem("loginData");
     if (loginData) {
-      const parsedData = JSON.parse(loginData);
       setLoggedIn(true);
-      setRole(parsedData.role);
+      const parsedData = JSON.parse(loginData);
+      setRole(parsedData?.role);
+      
     }
+  }, []);
+  useEffect(() => {
+   console.log(role)
   }, []);
 
   return (
-    loggedIn && (
+    
       <nav className="bg-blue-500 h-full w-[7%] p-4 fixed flex flex-col items-center">
         <h1 className="text-white text-2xl font-bold mb-6">67</h1>
         <ul className="flex-1 space-y-4">
@@ -115,9 +122,9 @@ const Sidebar = () => {
             )}
           </li>
           <li>
-            <Link to="/logout" className="flex items-center text-white hover:bg-blue-400 p-2 rounded transition-colors">
+            <button onClick={()=>{localStorage.removeItem("loginData"); navigate('/register'); window.location.reload()}} className="flex items-center text-white hover:bg-blue-400 p-2 rounded transition-colors">
               <FontAwesomeIcon icon={faSignOutAlt} className="h-6 w-6" />
-            </Link>
+            </button>
           </li>
           <li>
             <Link to="/upgrade" className="flex items-center text-white hover:bg-blue-400 p-2 rounded transition-colors">
@@ -126,7 +133,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </nav>
-    )
+    
   );
 };
 

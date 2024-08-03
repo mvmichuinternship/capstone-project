@@ -1,75 +1,3 @@
-// import React, { useEffect, useState } from 'react'
-// import { useParams } from 'react-router-dom';
-
-// const SingleProperty = () => {
-//     const {pid} = useParams();
-//     console.log(pid);
-
-//     const [property, setProperty]: any = useState({})
-//     const [showContact, setShowContact] = useState(false);
-
-//     useEffect(() => {
-//         fetch(`http://localhost:5189/api/Property/GetProperty?property=${pid}`)
-//           .then((res) => res.json())
-//           .then((data) => {
-//             console.log(data);
-//             setProperty(data);
-//           });
-//       }, []);
-
-//       useEffect(() => {
-//         console.log(property);
-//       }, [property]);
-
-//     return (
-//         <div>
-//         <h1>Property Details</h1>
-//         <div>
-//           {property?.media?.map((mediaItem, index) => (
-//             <div key={index}>
-//               {mediaItem.type === 'image' ? (
-//                 <img src={mediaItem.url} alt={`media-${index}`} />
-//               ) : (
-//                 <video src={mediaItem.url} controls />
-//               )}
-//             </div>
-//           ))}
-//         </div>
-//         <p>Location: {property.location}</p>
-//         <p>Price: {property.price}</p>
-//         {property.propertyType === 'Residential' && (
-//           <>
-//             <p>Type: {property.residentialSubtype}</p>
-//             <p>Bedrooms: {property.propertyDetails.numberOfBedrooms}</p>
-//             <p>Bathrooms: {property.propertyDetails.numberOfBathrooms}</p>
-//             <p>Area (sq ft): {property.propertyDetails.areaInSqFt}</p>
-//           </>
-//         )}
-//         {property.propertyType === 'Commercial' && (
-//           <>
-//             <p>Type: {property.commercialSubtype}</p>
-//             <p>Width (ft): {property.propertyDetails.propertyDimensionsWidth}</p>
-//             <p>Length (ft): {property.propertyDetails.propertyDimensionsLength}</p>
-//             <p>Has Constructions: {property.propertyDetails.hasConstructions ? 'Yes' : 'No'}</p>
-//             <p>Facing Road Width (ft): {property.propertyDetails.widthofFacingRoad}</p>
-//             <p>Commercial Area (sq ft): {property.propertyDetails.commercialAreaInSqFt}</p>
-//           </>
-//         )}
-//         <button onClick={() => setShowContact(!showContact)}>
-//           {showContact ? 'Hide Contact' : 'Upgrade to view contact'}
-//         </button>
-//         {showContact && (
-//           <div>
-//             <p>Email: {property.userEmail}</p>
-//             <p>Phone: {property.phone}</p>
-//           </div>
-//         )}
-//       </div>
-// );
-//   };
-
-//   export default SingleProperty;
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
@@ -164,7 +92,7 @@ const SingleProperty = () => {
 
   return (
     loggedIn && (
-      <div className="flex w-full justify-center items-center h-screen mt-16 p-4 md:mt-0 md:p-10 ">
+      <div className="flex w-full justify-center items-center h-screen mt-16 p-4 md:mt-0 md:p-10  ">
         <div className="w-full md:w-3/4 ">
           <h1 className="text-2xl md:text-3xl font-bold mb-6">
             Property Details
@@ -174,17 +102,17 @@ const SingleProperty = () => {
               <Slider {...sliderSettings}>
                 {property?.media?.map((mediaItem: any, index: number) => (
                   <div key={index} className="mb-4">
-                    {mediaItem.type === "image" ? (
+                    {mediaItem.type === "image/jpeg" || mediaItem.type ==="image/png" ? (
                       <img
                         src={mediaItem.url}
                         alt={`media-${index}`}
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-56 object-fit rounded-lg"
                       />
                     ) : (
                       <video
                         src={mediaItem.url}
                         controls
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-56 object-fill rounded-lg"
                       />
                     )}
                   </div>
@@ -296,7 +224,7 @@ const SingleProperty = () => {
                     <button className="bg-green-500 text-white py-1 px-4 rounded" onClick={handleDelete}>
                     Yes
                   </button>
-                    <button className="bg-red-500 text-white py-1 px-4 rounded" onClick={()=>setDeleteProperty(false)}>
+                    <button className="bg-red-500 text-white py-1 px-4 rounded" onClick={()=>{setDeleteProperty(false); navigate("/my-properties")}}>
                     No
                   </button>
                   </div>

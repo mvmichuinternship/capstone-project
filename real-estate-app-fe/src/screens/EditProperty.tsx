@@ -118,10 +118,10 @@ const EditProperty = () => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
       const newMediaItems = filesArray.map((file: any) => ({
-                filedata: file,
-                url:"",
-                type: file.type,
-              }));
+        filedata: file,
+        url: "",
+        type: file.type,
+      }));
       setUserData((prevState) => ({
         ...(prevState as any),
         newMedia: [...(prevState.newMedia || []), ...newMediaItems],
@@ -205,22 +205,23 @@ const EditProperty = () => {
     //   console.log(userData);
     // });
 
-    userData.media.forEach((item, index) => {
-      formData.append(`media[${index}].id`, item.id.toString());
-      formData.append(`media[${index}].url`, item.url);
-      formData.append(`media[${index}].type`, item.type);
-    });
+    // userData.media.forEach((item, index) => {
+    //   formData.append(`media[${index}].id`, item.id.toString());
+    //   formData.append(`media[${index}].url`, item.url);
+    //   formData.append(`media[${index}].type`, item.type);
+    // });
 
     // Append new media files
     userData.newMedia.forEach((item, index) => {
-        if (item.filedata instanceof File) {
-                formData.append(`media[${index}].file`, item.filedata);
-              } else {
-                console.error("Invalid file type for media item:", item);
-              }
-              formData.append(`media[${index}].url`, item.url);
-              formData.append(`media[${index}].type`, item.type);
-              console.log(userData);    });
+      if (item.filedata instanceof File) {
+        formData.append(`media[${index}].file`, item.filedata);
+      } else {
+        console.error("Invalid file type for media item:", item);
+      }
+      formData.append(`media[${index}].url`, item.url);
+      formData.append(`media[${index}].type`, item.type);
+      console.log(userData);
+    });
 
     var res = localStorage.getItem("loginData");
     if (res) var token = JSON.parse(res)?.token;
@@ -252,9 +253,9 @@ const EditProperty = () => {
   return (
     loggedIn &&
     role === "seller" && (
-      <Container>
-        <Card className="space-y-4 sm:w-[50%]">
-          <span className="text-2xl">Post Property</span>
+      <Container className=" overflow-y-auto">
+        <Card className="space-y-4 md:w-[60%]">
+          <span className="text-2xl">Edit Property</span>
           <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2 ">
             <div className=" flex flex-col justify-center items-start">
               <label htmlFor="name" className="text-xs">

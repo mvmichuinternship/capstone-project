@@ -123,8 +123,8 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <Card>
+    <Container >
+      <Card className="sm:w-[50%]">
         {/* <form action="" className="w-full space-y-2"> */}
         <span className="text-2xl">Register</span>
         <input

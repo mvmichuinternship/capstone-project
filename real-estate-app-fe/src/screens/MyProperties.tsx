@@ -55,7 +55,7 @@ const MyProperties = () => {
   }, [loggedIn, role, email]);
 
   return (loggedIn && role === "seller" && (
-    <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
+    <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2 ">
       {properties.map((property: any, i: number) => (
         <div key={i} >
           <PropertyCard propertyData={property} />

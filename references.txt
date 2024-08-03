@@ -12,3 +12,7 @@ https://learn.microsoft.com/en-us/dotnet/architecture/microservices/multi-contai
 https://medium.com/@darshana-edirisinghe/net-web-api-dockerization-f13ee8cc0b45
 
 https://minasami.com/2020/09/14/should-repositories-throw-exceptions.html
+
+
+docker compose issue:
+https://github.com/microsoft/DockerTools/issues/345

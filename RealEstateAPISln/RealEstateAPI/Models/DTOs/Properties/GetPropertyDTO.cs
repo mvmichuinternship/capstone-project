@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealEstateAPI.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RealEstateAPI.Models.DTOs.Properties
 {
+    [ExcludeFromCodeCoverage]
     public class GetPropertyDTO
     {
         public int PId { get; set; }

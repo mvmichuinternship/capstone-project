@@ -13,16 +13,18 @@ using Google.Apis.Auth.OAuth2;
 using Azure.Security.KeyVault.Secrets;
 using Azure.Identity;
 using Azure.Storage.Blobs;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace RealEstateAPI
 {
+    [ExcludeFromCodeCoverage]
     public class Program
     {
         private static async Task<string> GetSqlCs()
         {
             const string secretName = "mv-67acres-sql-cs";
-            var keyVaultName = "mv-67acres-connection-string";
+            var keyVaultName = "mv-67acres-cs";
             var kvUri = $"https://{keyVaultName}.vault.azure.net";
             var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
             var secret = await client.GetSecretAsync(secretName);
@@ -32,12 +34,33 @@ namespace RealEstateAPI
         private static async Task<string> GetBlobCs()
         {
             const string secretName = "mv-67acres-blob-cs";
-            var keyVaultName = "mv-67acres-connection-string";
+            var keyVaultName = "mv-67acres-cs";
             var kvUri = $"https://{keyVaultName}.vault.azure.net";
             var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
             var secret = await client.GetSecretAsync(secretName);
             return secret.Value.Value;
         }
+
+        private static async Task<string> GetTwilioSid()
+        {
+            const string secretName = "mv-67acres-twilio-sid";
+            var keyVaultName = "mv-67acres-cs";
+            var kvUri = $"https://{keyVaultName}.vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync(secretName);
+            return secret.Value.Value;
+        }
+
+        private static async Task<string> GetTwilioToken()
+        {
+            const string secretName = "mv-67acres-twilio-token";
+            var keyVaultName = "mv-67acres-cs";
+            var kvUri = $"https://{keyVaultName}.vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync(secretName);
+            return secret.Value.Value;
+        }
+
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -100,15 +123,15 @@ namespace RealEstateAPI
             #endregion
 
             #region context
-            builder.Services.AddDbContext<RealEstateAppContext>(
-               options => options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))
-               );
-
-            //var defaultConnection = await GetSqlCs();
-
             //builder.Services.AddDbContext<RealEstateAppContext>(
-            //    options => options.UseSqlServer(defaultConnection)
-            //    );
+            //   options => options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))
+            //   );
+
+            var defaultConnection = await GetSqlCs();
+
+            builder.Services.AddDbContext<RealEstateAppContext>(
+                options => options.UseSqlServer(defaultConnection)
+                );
             #endregion
 
             #region repositories
@@ -125,12 +148,16 @@ namespace RealEstateAPI
             #region services
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
-            builder.Services.AddScoped<ISmsService, TwilioSmsService>();
+            //builder.Services.AddScoped<ISmsService, TwilioSmsService>();
             builder.Services.AddScoped<IPropertyService, PropertyService>();
             builder.Services.AddScoped<IBlobService, BlobStorageService>();
 
             var blobcs = await GetBlobCs();
             builder.Services.AddSingleton(x => new BlobServiceClient(blobcs));
+
+            var twilioAccountSid = await GetTwilioSid();
+            var twilioAuthToken = await GetTwilioToken();
+            builder.Services.AddSingleton<ISmsService>(new TwilioSmsService(twilioAccountSid, twilioAuthToken));
             #endregion
 
 

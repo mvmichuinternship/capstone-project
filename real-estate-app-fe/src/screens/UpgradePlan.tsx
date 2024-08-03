@@ -75,7 +75,7 @@ const UpgradePlan = () => {
   };
 
   return (loggedIn && (
-    <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
+    <div className=" flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
         {currentPlan==="Basic"&&(<span>Upgrade to premium?</span>)}
         {currentPlan==="Premium"&&(<span>
         Downgrade to basic
