@@ -18,18 +18,21 @@ import UpgradePlan from "./screens/UpgradePlan.tsx";
 import SwitchRole from "./screens/SwitchRoles.tsx";
 import EditProperty from "./screens/EditProperty.tsx";
 import Navbar from "./components/Navbar.tsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App h-screen">
       <BrowserRouter>
-        <div className="flex h-full overflow-auto ">
+        <div className="w-full h-full flex flex-col sm:flex sm:flex-row justify-start sm:items-start items-center">
           <Sidebar />
-          <div className="flex flex-col w-full h-full">
-            <div className="ml-[7%]">
-              <Navbar />
-            </div>
-            <Container className="pl-[7%]">
+          {/* <div className="flex flex-col w-full h-full justify-center items-center"> */}
+            {/* <div className="ml-[7%] "> */}
+              {/* <Navbar /> */}
+            {/* </div> */}
+            <Container className="sm:pl-[8%] pt-[20%]  h-full">
+              <ToastContainer closeButton autoClose={5000} icon/>
               <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/register" element={<Register />} />
@@ -47,7 +50,7 @@ function App() {
                 <Route path="*" element={<NoPage />} />
               </Routes>
             </Container>
-          </div>
+          {/* </div> */}
         </div>
       </BrowserRouter>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropertyCard from "../components/Property-card.tsx";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button.tsx";
+import { toast } from "react-toastify";
 
 const UpgradePlan = () => {
   const navigate = useNavigate();
@@ -64,10 +65,12 @@ const UpgradePlan = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log("data", data);
+              toast.success(`Plan switched to ${data?.plan}!`)
               localStorage.setItem("loginData", JSON.stringify(data))
               setcurrentPlan(data.plan);
             })
             .catch((error) => {
+              toast.error(error)
               console.error('Fetch error:', error); // Handle any errors that occur during fetch
             });
         

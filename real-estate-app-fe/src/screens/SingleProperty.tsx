@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { toast } from "react-toastify";
 
 const SingleProperty = () => {
   const { pid } = useParams();
@@ -78,9 +79,12 @@ const SingleProperty = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        toast.success(`Deleted successfully`)
         setDeleteProperty(false);
       })
       .catch((error) => {
+        toast.error(error)
+        toast.error("Cannot delete property at the moment")
         console.error("Fetch error:", error);
         
       });
@@ -224,7 +228,7 @@ const SingleProperty = () => {
                     <button className="bg-green-500 text-white py-1 px-4 rounded" onClick={handleDelete}>
                     Yes
                   </button>
-                    <button className="bg-red-500 text-white py-1 px-4 rounded" onClick={()=>{setDeleteProperty(false); navigate("/my-properties")}}>
+                    <button className="bg-red-500 text-white py-1 px-4 rounded" onClick={()=>{setDeleteProperty(!deleteProperty); navigate("/my-properties")}}>
                     No
                   </button>
                   </div>

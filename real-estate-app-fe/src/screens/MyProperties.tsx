@@ -44,24 +44,27 @@ const MyProperties = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("data", data);
+          // console.log("data", data);
           const filteredProperties = data.filter((property: any) => property.userEmail === email);
           setProperties(filteredProperties);
         })
         .catch((error) => {
-          console.error('Fetch error:', error); // Handle any errors that occur during fetch
+          // console.error('Fetch error:', error); // Handle any errors that occur during fetch
         });
     }
   }, [loggedIn, role, email]);
 
   return (loggedIn && role === "seller" && (
-    <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2 ">
+    <div className="h-full flex flex-col justify-center items-center">
+      <span className="text-3xl font-bold">My Properties</span>
+    <div className="flex h-[100%] sm:h-[80%] justify-center items-center sm:space-x-2 flex-wrap sm:space-y-2 ">
       {properties.map((property: any, i: number) => (
         <div key={i} >
           <PropertyCard propertyData={property} />
         </div>
       ))}
     </div>
+     </div>
   ));
 };
 

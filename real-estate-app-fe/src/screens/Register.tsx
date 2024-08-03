@@ -3,6 +3,7 @@ import Container from "../components/Container.tsx";
 import Card from "../components/Card.tsx";
 import Button from "../components/Button.tsx";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
@@ -111,12 +112,14 @@ const Register = () => {
       });
 
       if (response.ok) {
-        console.log("Property uploaded successfully");
+        console.log("Registered successfully");
+        toast.success(`Successfully registered`)
         navigate('/login');
       } else {
         console.log("Upload failed");
       }
     } catch (error) {
+      toast.error(error)
       console.error("Error uploading property:", error);
     }
     console.log(userData)

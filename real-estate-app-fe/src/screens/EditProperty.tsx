@@ -3,6 +3,7 @@ import Container from "../components/Container.tsx";
 import Card from "../components/Card.tsx";
 import Button from "../components/Button.tsx";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface MediaItem {
   id: number;
@@ -239,10 +240,12 @@ const EditProperty = () => {
 
       if (response.ok) {
         console.log("Property posted successfully!");
+        toast.success("Property edited successfully!")
         navigate("/my-properties");
       } else {
         console.error("Failed to post property.");
         const errorText = await response.text();
+        toast.error("Failed to post property.")
         console.error("Error details:", errorText);
       }
     } catch (error) {
@@ -253,7 +256,7 @@ const EditProperty = () => {
   return (
     loggedIn &&
     role === "seller" && (
-      <Container className=" overflow-y-auto">
+      <Container className="">
         <Card className="space-y-4 md:w-[60%]">
           <span className="text-2xl">Edit Property</span>
           <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2 ">
