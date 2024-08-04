@@ -78,11 +78,11 @@ const UpgradePlan = () => {
   };
 
   return (loggedIn && (
-    <div className=" flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
-        {currentPlan==="Basic"&&(<span>Upgrade to premium?</span>)}
-        {currentPlan==="Premium"&&(<span>
+    <div className=" flex flex-col justify-start items-center space-x-2 flex-wrap space-y-2">
+        {currentPlan==="Basic"&&(<div> <img src="/assets/upgrade.jpeg" alt="buyer?" /> <span>Upgrade to premium?</span></div>)}
+        {currentPlan==="Premium"&&(<div> <img src="/assets/downgrade.jpeg" alt="buyer?" /> <span>
         Downgrade to basic
-      </span>)}
+      </span></div>)}
       <Button title={`${currentPlan==="Basic"?"Upgrade":"Downgrade"}`} onClick={handleSubmit} />
       
     </div>

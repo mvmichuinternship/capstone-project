@@ -8,14 +8,11 @@ const MyProperties = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const loginData = localStorage.getItem("loginData");
     if (loginData) {
       const parsedData = JSON.parse(loginData);
-      const token = parsedData?.token;
       const userEmail = parsedData?.email;
       const userRole = parsedData?.role;
 
@@ -55,8 +52,8 @@ const MyProperties = () => {
   }, [loggedIn, role, email]);
 
   return (loggedIn && role === "seller" && (
-    <div className="h-full flex flex-col justify-center items-center">
-      <span className="text-3xl font-bold">My Properties</span>
+    <div className="h-full flex flex-col justify-center items-center z-1">
+      <span className="text-3xl font-bold sm:pt-0 pt-12">My Properties</span>
     <div className="flex h-[100%] sm:h-[80%] justify-center items-center sm:space-x-2 flex-wrap sm:space-y-2 ">
       {properties.map((property: any, i: number) => (
         <div key={i} >

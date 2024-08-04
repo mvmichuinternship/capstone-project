@@ -11,7 +11,7 @@ const PropertyCard = ({ propertyData, className }: { propertyData: any, classNam
     <div className={cn('w-64 max-w-sm shadow-xl h-84 rounded-xl m-2 p-4 flex flex-col bg-white', className)}>
       <div className='w-full h-48 overflow-hidden rounded-t-lg'>
       {propertyData?.media?.map((mediaItem: any, index: number) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="mb-4 z-0">
                     {mediaItem.type === "image/jpeg" || mediaItem.type ==="image/png" ? (
                       <img
                         src={mediaItem.url}
@@ -22,7 +22,7 @@ const PropertyCard = ({ propertyData, className }: { propertyData: any, classNam
                       <video
                         src={mediaItem.url}
                         controls
-                        className="w-full h-56 object-fill rounded-lg"
+                        className="w-full h-56 object-cover rounded-lg z-1"
                       />
                     )}
                   </div>

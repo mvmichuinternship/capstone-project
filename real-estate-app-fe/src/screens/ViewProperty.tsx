@@ -17,13 +17,13 @@ const ViewProperty = () => {
 
   
   const allLocation = Array.from(new Set(properties.map((p) => p.location))) ;
-  const allResidentialTypes :any = Array.from(new Set(properties.map((p) => p.residentialSubtype)));
-  const allCommercialTypes:any = Array.from(new Set(properties.map((p) => p.commercialSubtype)));
+  const allResidentialTypes :any = ["Apartment", "Villa", "Pg"]
+  const allCommercialTypes:any = ["Plot", "Hospitality"];
 
   const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 
-  console.log("loc", allLocation, "types", allResidentialTypes, allCommercialTypes)
+  // console.log("loc", allLocation, "types", allResidentialTypes, allCommercialTypes)
 
   useEffect(() => {
     const loginData = localStorage.getItem("loginData");
@@ -36,8 +36,8 @@ const ViewProperty = () => {
         setEmail(userEmail);
         setRole(userRole);
         setLoggedIn(true);
-        if (userRole === "buyer") {
-          navigate('/view-properties');
+        if (userRole === "seller") {
+          navigate('/my-properties');
         }
       } else {
         navigate('/login');
@@ -57,12 +57,12 @@ const ViewProperty = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("data", data);
-          // const filteredProperties = data.filter((property: any) => property.userEmail === email);
-          setProperties(data);
+          // console.log("data", data);
+          const filteredProperties = data.filter((property: any) => property.userEmail !== email);
+          setProperties(filteredProperties);
         })
         .catch((error) => {
-          console.error('Fetch error:', error); 
+          // console.error('Fetch error:', error); 
         });
     }
   }, [loggedIn, role, email]);
@@ -108,6 +108,9 @@ const ViewProperty = () => {
     }
   
     if (selectedTypes.length > 0) {
+      if (houseType === "all") {
+        filtered = filtered
+      }
       if (houseType === "residential") {
         filtered = filtered.filter((property: any) => selectedTypes.includes(property.residentialSubtype));
       } else {
@@ -122,7 +125,7 @@ const ViewProperty = () => {
       );
     }
   
-    console.log("Filtered properties:", filtered); // Check the filtered data
+    // console.log("Filtered properties:", filtered); // Check the filtered data
   
     setFilteredProperties(filtered);
   };
@@ -144,10 +147,14 @@ const ViewProperty = () => {
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     filterProperties();
+    setSuggestions([]);
   }
 
   return (loggedIn && role === "buyer" && (
-    <div className="flex flex-col mt-10 p-4">
+    <div className="flex flex-col w-[90%]  items-center h-full ">
+       <span className="text-3xl font-bold pb-10">View Properties</span>
+       <div className="w-[80%] ">
+
       <div className="mb-4">
         <form onSubmit={handleSearch} className="flex">
           <input
@@ -175,9 +182,9 @@ const ViewProperty = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-wrap mb-4">
+      <div className="flex flex-wrap sm:flex-row flex-col justify-center items-center mb-4">
         <div className="flex flex-col w-1/2 p-2">
-          <label className="font-bold mb-2">Location</label>
+          <label className="font-bold mb-2">City</label>
           {allLocation.map((loc: any, idx) => (
             <div key={idx} className="flex items-center mb-2">
               <input
@@ -198,32 +205,37 @@ const ViewProperty = () => {
             onChange={(e) => handleHouseTypeChange(e.target.value)}
             className="w-full p-2 border rounded"
           >
+            <option value="all">All</option>
             <option value="residential">Residential</option>
             <option value="commercial">Commercial</option>
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap mb-4">
+      <div className="flex flex-wrap mb-4 sm:flex-row flex-col justify-center items-center">
         {houseType === "residential" && (
-          <div className="flex flex-col w-full p-2">
-            <label className="font-bold mb-2">Residential Types</label>
+          <div className="flex flex-col  w-full p-2">
+            <label className="font-bold mb-2 self-start">Residential Types</label>
+            <div className="flex space-x-8">
+
             {allResidentialTypes.map((type: any, idx) => (
-              <div key={idx} className="flex items-center mb-2">
+              <div key={idx} className="flex  sm:w-auto mb-2">
                 <input
                   type="checkbox"
                   value={type}
                   checked={selectedTypes.includes(type)}
                   onChange={handleTypesChange}
-                  className="form-checkbox h-4 w-4 text-blue-500 transition duration-150 ease-in-out"
+                  className="form-checkbox h-4 w-4 text-blue-500 transition self-center duration-150 ease-in-out"
                 />
                 <label className="ml-2">{type}</label>
               </div>
             ))}
+            </div>
           </div>
         )}
         {houseType === "commercial" && (
           <div className="flex flex-col w-full p-2">
-            <label className="font-bold mb-2">Commercial Types</label>
+            <label className="font-bold mb-2 self-start">Commercial Types</label>
+            <div className="flex space-x-8">
             {allCommercialTypes.map((type: any, idx) => (
               <div key={idx} className="flex items-center mb-2">
                 <input
@@ -237,16 +249,18 @@ const ViewProperty = () => {
               </div>
             ))}
           </div>
+          </div>
         )}
       </div>
-      {/* <div className="flex justify-center items-center flex-wrap sm:space-x-2 sm:space-y-2"> */}
+       </div>
+      <div className="flex justify-center items-center flex-wrap sm:space-x-2 sm:space-y-2">
         {filteredProperties.map((property: any, i: number) => (
           <div key={i} className="flex justify-center items-center p-2">
             <PropertyCard propertyData={property} />
           </div>
         ))}
       </div>
-    // </div>
+     </div>
   ));
   
   

@@ -124,7 +124,7 @@ namespace RealEstateAPI.Controllers
         [ProducesResponseType(typeof(LoginTokenDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status401Unauthorized)]
         [ExcludeFromCodeCoverage]
-        public async Task<ActionResult<LoginTokenDTO>> Switch(LoginTokenDTO userLoginDTO)
+        public async Task<ActionResult<LoginTokenDTO>> Switch([FromForm]LoginTokenDTO userLoginDTO)
         {
             if (ModelState.IsValid)
             {

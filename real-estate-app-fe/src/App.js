@@ -23,15 +23,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App h-screen">
+    <div className="App w-screen h-screen">
       <BrowserRouter>
-        <div className="w-full h-full flex flex-col sm:flex sm:flex-row justify-start sm:items-start items-center">
+        <div className="w-full h-full  flex flex-col sm:flex sm:flex-row justify-start sm:items-start items-center">
           <Sidebar />
           {/* <div className="flex flex-col w-full h-full justify-center items-center"> */}
             {/* <div className="ml-[7%] "> */}
               {/* <Navbar /> */}
             {/* </div> */}
-            <Container className="sm:pl-[8%] pt-[20%]  h-full">
+            <Container className="sm:pl-[7%]  pt-[20%] h-full">
               <ToastContainer closeButton autoClose={5000} icon/>
               <Routes>
                 <Route path="/" element={<Landing />} />

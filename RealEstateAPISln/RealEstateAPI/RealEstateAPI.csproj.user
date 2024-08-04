@@ -3,7 +3,10 @@
   <PropertyGroup>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
-    <ActiveDebugProfile>Container (Dockerfile)</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Users\VC\Desktop\Presidio\67acres\.github\workflows\realestateapi-app-20240803162723.yml</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>RealEstateAPI</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\VC\Desktop\Presidio\67acres\RealEstateAPISln\RealEstateAPI\Properties\PublishProfiles\mv-67acres-api.pubxml</NameOfLastUsedPublishProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

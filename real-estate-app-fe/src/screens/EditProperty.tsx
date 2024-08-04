@@ -43,8 +43,7 @@ const EditProperty = () => {
       areaInSqFt: 0,
       pid: 0,
     },
-    media: [] as MediaItem[],
-    newMedia: [] as Media[],
+    media: [] as Media[],
   });
 
   const [nameError, setNameError] = useState("");
@@ -125,7 +124,7 @@ const EditProperty = () => {
       }));
       setUserData((prevState) => ({
         ...(prevState as any),
-        newMedia: [...(prevState.newMedia || []), ...newMediaItems],
+        newMedia: [...(prevState.media || []), ...newMediaItems],
       }));
     }
   };
@@ -213,7 +212,7 @@ const EditProperty = () => {
     // });
 
     // Append new media files
-    userData.newMedia.forEach((item, index) => {
+    userData.media.forEach((item, index) => {
       if (item.filedata instanceof File) {
         formData.append(`media[${index}].file`, item.filedata);
       } else {
@@ -256,406 +255,396 @@ const EditProperty = () => {
   return (
     loggedIn &&
     role === "seller" && (
-      <Container className="">
-        <Card className="space-y-4 md:w-[60%]">
-          <span className="text-2xl">Edit Property</span>
-          <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2 ">
-            <div className=" flex flex-col justify-center items-start">
-              <label htmlFor="name" className="text-xs">
-                Name
-              </label>
+      <Container className="sm:mt-20 pt-10 pb-10">
+        <Card className="space-y-4  md:w-[65%] w-[80%]">
+        <span className="text-2xl">Post Property</span>
+        <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2 ">
+          <div className=" flex flex-col justify-center items-start">
+            <label htmlFor="name" className="text-xs">
+              Name
+            </label>
+            <input
+              className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+              name="name"
+              id="name"
+              type="text"
+              placeholder="Enter Property Name"
+              onChange={handleInputChange}
+              value={userData.name}
+            />
+            <span className="text-xs self-start w-full text-red-500">
+              {nameError}
+            </span>
+          </div>
+          <div className=" flex flex-col justify-center items-start">
+            <label htmlFor="location" className="text-xs">
+              Location
+            </label>
+            <input
+              className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+              name="location"
+              id="location"
+              type="text"
+              placeholder="Enter Location"
+              onChange={handleInputChange}
+              value={userData.location}
+            />
+            <span className="text-xs self-start w-full text-red-500">
+              {locationError}
+            </span>
+          </div>
+        </div>
+        <span>
+          <span className="flex sm:self-start self-center justify-center sm:justify-start flex-wrap w-full py-4">
+            Property type{" "}
+          </span>
+          <div className="flex sm:justify-start justify-center flex-wrap w-full sm:flex-nowrap  space-y-0 space-x-2">
+            <div>
               <input
-                className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                name="name"
-                id="name"
-                type="text"
-                placeholder="Enter Property Name"
+                type="radio"
+                id="Residential"
+                name="propertyType"
+                value="Residential"
+                checked={userData.propertyType === "Residential"}
                 onChange={handleInputChange}
-                value={userData.name}
+                className="hidden"
               />
-              <span className="text-xs self-start w-full text-red-500">
-                {nameError}
-              </span>
+              <label
+                htmlFor="Residential"
+                className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                  userData.propertyType === "Residential"
+                    ? "bg-blue-500 text-white"
+                    : "bg-blue-100"
+                }`}
+              >
+                Residential
+              </label>
             </div>
-            <div className=" flex flex-col justify-center items-start">
-              <label htmlFor="location" className="text-xs">
-                Location
-              </label>
+            <div>
               <input
-                className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                name="location"
-                id="location"
-                type="text"
-                placeholder="Enter Location"
+                type="radio"
+                id="Commercial"
+                name="propertyType"
+                value="Commercial"
+                checked={userData.propertyType === "Commercial"}
                 onChange={handleInputChange}
-                value={userData.location}
+                className="hidden"
               />
-              <span className="text-xs self-start w-full text-red-500">
-                {locationError}
-              </span>
+              <label
+                htmlFor="Commercial"
+                className={`cursor-pointer rounded-full font-normal  sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                  userData.propertyType === "Commercial"
+                    ? "bg-blue-500 text-white"
+                    : "bg-blue-100"
+                }`}
+              >
+                Commercial
+              </label>
             </div>
           </div>
-          <span>
-            <span className="flex self-start flex-wrap w-full py-4">
-              Property type{" "}
+        </span>
+
+        {userData.propertyType && (
+          <>
+            <span>
+              {userData.propertyType === "Residential" ? (
+                <>
+                  <span className="flex self-start justify-center sm:justify-start flex-wrap w-full py-4">
+                    Choose a Residential Subtype
+                  </span>
+                  <div className="flex flex-wrap justify-center sm:justify-start sm:flex-nowrap  space-y-0 space-x-2">
+                    <div>
+                      <input
+                        type="radio"
+                        id="Villa"
+                        name="residentialSubtype"
+                        value="Villa"
+                        checked={userData.residentialSubtype === "Villa"}
+                        onChange={handleInputChange}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="Villa"
+                        className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                          userData.residentialSubtype === "Villa"
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-100"
+                        }`}
+                      >
+                        Villa
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="Apartment"
+                        name="residentialSubtype"
+                        value="Apartment"
+                        checked={userData.residentialSubtype === "Apartment"}
+                        onChange={handleInputChange}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="Apartment"
+                        className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                          userData.residentialSubtype === "Apartment"
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-100"
+                        }`}
+                      >
+                        Apartment
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="PG"
+                        name="residentialSubtype"
+                        value="PG"
+                        checked={userData.residentialSubtype === "PG"}
+                        onChange={handleInputChange}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="PG"
+                        className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                          userData.residentialSubtype === "PG"
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-100"
+                        }`}
+                      >
+                        PG
+                      </label>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <span className="flex self-start justify-center sm:justify-start flex-wrap w-full py-4">
+                    Choose a Commercial Subtype
+                  </span>
+                  <div className="flex flex-wrap justify-center sm:justify-start sm:flex-nowrap space-y-0 space-x-2">
+                    <div>
+                      <input
+                        type="radio"
+                        id="Plot"
+                        name="commercialSubtype"
+                        value="Plot"
+                        checked={userData.commercialSubtype === "Plot"}
+                        onChange={handleInputChange}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="Plot"
+                        className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                          userData.commercialSubtype === "Plot"
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-100"
+                        }`}
+                      >
+                        Plot
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="Hospitality"
+                        name="commercialSubtype"
+                        value="Hospitality"
+                        checked={userData.commercialSubtype === "Hospitality"}
+                        onChange={handleInputChange}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="Hospitality"
+                        className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
+                          userData.commercialSubtype === "Hospitality"
+                            ? "bg-blue-500 text-white"
+                            : "bg-blue-100"
+                        }`}
+                      >
+                        Hospitality
+                      </label>
+                    </div>
+                  </div>
+                </>
+              )}
             </span>
-            <div className="flex justify-start flex-wrap w-full sm:flex-nowrap space-y-4 sm:space-y-0 sm:space-x-2">
-              <div>
-                <input
-                  type="radio"
-                  id="Residential"
-                  name="propertyType"
-                  value="Residential"
-                  checked={userData.propertyType === "Residential"}
-                  onChange={handleInputChange}
-                  className="hidden"
-                />
-                <label
-                  htmlFor="Residential"
-                  className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                    userData.propertyType === "Residential"
-                      ? "bg-blue-500 text-white"
-                      : "bg-blue-100"
-                  }`}
-                >
-                  Residential
+          </>
+        )}
+        {userData.propertyType && userData.commercialSubtype && (
+          <>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="propertyDimensionsWidth" className="text-xs">
+                  Property Width
                 </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="propertyDimensionsWidth"
+                  id="propertyDimensionsWidth"
+                  type="number"
+                  placeholder="Enter Property Dimensions in width"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.propertyDimensionsWidth}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
               </div>
-              <div>
-                <input
-                  type="radio"
-                  id="Commercial"
-                  name="propertyType"
-                  value="Commercial"
-                  checked={userData.propertyType === "Commercial"}
-                  onChange={handleInputChange}
-                  className="hidden"
-                />
-                <label
-                  htmlFor="Commercial"
-                  className={`cursor-pointer rounded-full font-normal  sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                    userData.propertyType === "Commercial"
-                      ? "bg-blue-500 text-white"
-                      : "bg-blue-100"
-                  }`}
-                >
-                  Commercial
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="propertyDimensionsLength" className="text-xs">
+                  Property Length
                 </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="propertyDimensionsLength"
+                  id="propertyDimensionsLength"
+                  type="number"
+                  placeholder="Enter Property Dimensions in Length"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.propertyDimensionsLength}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
               </div>
             </div>
-          </span>
 
-          {userData.propertyType && (
-            <>
-              <span>
-                {userData.propertyType === "Residential" ? (
-                  <>
-                    <span className="flex self-start flex-wrap w-full py-4">
-                      Choose a Residential Subtype
-                    </span>
-                    <div className="flex flex-wrap sm:flex-nowrap space-y-4 sm:space-y-0 sm:space-x-2">
-                      <div>
-                        <input
-                          type="radio"
-                          id="Villa"
-                          name="residentialSubtype"
-                          value="Villa"
-                          checked={userData.residentialSubtype === "Villa"}
-                          onChange={handleInputChange}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="Villa"
-                          className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                            userData.residentialSubtype === "Villa"
-                              ? "bg-blue-500 text-white"
-                              : "bg-blue-100"
-                          }`}
-                        >
-                          Villa
-                        </label>
-                      </div>
-                      <div>
-                        <input
-                          type="radio"
-                          id="Apartment"
-                          name="residentialSubtype"
-                          value="Apartment"
-                          checked={userData.residentialSubtype === "Apartment"}
-                          onChange={handleInputChange}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="Apartment"
-                          className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                            userData.residentialSubtype === "Apartment"
-                              ? "bg-blue-500 text-white"
-                              : "bg-blue-100"
-                          }`}
-                        >
-                          Apartment
-                        </label>
-                      </div>
-                      <div>
-                        <input
-                          type="radio"
-                          id="PG"
-                          name="residentialSubtype"
-                          value="PG"
-                          checked={userData.residentialSubtype === "PG"}
-                          onChange={handleInputChange}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="PG"
-                          className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                            userData.residentialSubtype === "PG"
-                              ? "bg-blue-500 text-white"
-                              : "bg-blue-100"
-                          }`}
-                        >
-                          PG
-                        </label>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <span className="flex self-start flex-wrap w-full py-4">
-                      Choose a Commercial Subtype
-                    </span>
-                    <div className="flex flex-wrap sm:flex-nowrap space-y-4 sm:space-y-0 sm:space-x-2">
-                      <div>
-                        <input
-                          type="radio"
-                          id="Plot"
-                          name="commercialSubtype"
-                          value="Plot"
-                          checked={userData.commercialSubtype === "Plot"}
-                          onChange={handleInputChange}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="Plot"
-                          className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                            userData.commercialSubtype === "Plot"
-                              ? "bg-blue-500 text-white"
-                              : "bg-blue-100"
-                          }`}
-                        >
-                          Plot
-                        </label>
-                      </div>
-                      <div>
-                        <input
-                          type="radio"
-                          id="Hospitality"
-                          name="commercialSubtype"
-                          value="Hospitality"
-                          checked={userData.commercialSubtype === "Hospitality"}
-                          onChange={handleInputChange}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="Hospitality"
-                          className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                            userData.commercialSubtype === "Hospitality"
-                              ? "bg-blue-500 text-white"
-                              : "bg-blue-100"
-                          }`}
-                        >
-                          Hospitality
-                        </label>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </span>
-            </>
-          )}
-          {userData.propertyType && userData.commercialSubtype && (
-            <>
-              <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2">
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="propertyDimensionsWidth" className="text-xs">
-                    Property Width
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="propertyDimensionsWidth"
-                    id="propertyDimensionsWidth"
-                    type="number"
-                    placeholder="Enter Property Dimensions in width"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.propertyDimensionsWidth}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="propertyDimensionsLength" className="text-xs">
-                    Property Length
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="propertyDimensionsLength"
-                    id="propertyDimensionsLength"
-                    type="number"
-                    placeholder="Enter Property Dimensions in Length"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.propertyDimensionsLength}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="widthofFacingRoad" className="text-xs">
+                  Width of Facing Road
+                </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="widthofFacingRoad"
+                  id="widthofFacingRoad"
+                  type="number"
+                  placeholder="Enter the Width of the Facing Road"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.widthofFacingRoad}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
               </div>
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="commercialAreaInSqFt" className="text-xs">
+                  Area in Sq.Ft
+                </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="commercialAreaInSqFt"
+                  id="commercialAreaInSqFt"
+                  type="text"
+                  placeholder="Enter Area in Sq.Ft"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.commercialAreaInSqFt}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="widthofFacingRoad" className="text-xs">
+                  Does it have constructions?
+                </label>
+                <input
+                  type="checkbox"
+                  name="hasConstructions"
+                  checked={userData.propertyDetails.hasConstructions}
+                  onChange={handlePropertyDetailsChange}
+                  className="mt-1"
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
+              </div>
+            </div>
+          </>
+        )}
+        {userData.propertyType && userData.residentialSubtype && (
+          <>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="numberOfBedrooms" className="text-xs">
+                  Number of Bedrooms
+                </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="numberOfBedrooms"
+                  id="numberOfBedrooms"
+                  type="number"
+                  placeholder="Enter Number of Bedrooms"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.numberOfBedrooms}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
+              </div>
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="numberOfBathrooms" className="text-xs">
+                  Number of Bathrooms
+                </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="numberOfBathrooms"
+                  id="numberOfBathrooms"
+                  type="number"
+                  placeholder="Enter Number of Bathrooms"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.numberOfBathrooms}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
+              </div>
+            </div>
 
-              <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2">
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="widthofFacingRoad" className="text-xs">
-                    Width of Facing Road
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="widthofFacingRoad"
-                    id="widthofFacingRoad"
-                    type="number"
-                    placeholder="Enter the Width of the Facing Road"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.widthofFacingRoad}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="commercialAreaInSqFt" className="text-xs">
-                    Area in Sq.Ft
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="commercialAreaInSqFt"
-                    id="commercialAreaInSqFt"
-                    type="text"
-                    placeholder="Enter Area in Sq.Ft"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.commercialAreaInSqFt}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
+              <div className=" flex flex-col justify-center items-start">
+                <label htmlFor="areaInSqFt" className="text-xs">
+                  Area in Sq.Ft
+                </label>
+                <input
+                  className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+                  name="areaInSqFt"
+                  id="areaInSqFt"
+                  type="number"
+                  placeholder="Enter the Area in Sq.Ft"
+                  onChange={handlePropertyDetailsChange}
+                  value={userData.propertyDetails.areaInSqFt}
+                />
+                <span className="text-xs self-start w-full text-red-500">
+                  {nameError}
+                </span>
               </div>
-              <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2">
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="widthofFacingRoad" className="text-xs">
-                    Does it have constructions?
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="hasConstructions"
-                    checked={userData.propertyDetails.hasConstructions}
-                    onChange={handlePropertyDetailsChange}
-                    className="mt-1"
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-              </div>
-            </>
-          )}
-          {userData.propertyType && userData.residentialSubtype && (
-            <>
-              <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2">
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="numberOfBedrooms" className="text-xs">
-                    Number of Bedrooms
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="numberOfBedrooms"
-                    id="numberOfBedrooms"
-                    type="number"
-                    placeholder="Enter Number of Bedrooms"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.numberOfBedrooms}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="numberOfBathrooms" className="text-xs">
-                    Number of Bathrooms
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="numberOfBathrooms"
-                    id="numberOfBathrooms"
-                    type="number"
-                    placeholder="Enter Number of Bathrooms"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.numberOfBathrooms}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full sm:space-x-2">
-                <div className=" flex flex-col justify-center items-start">
-                  <label htmlFor="areaInSqFt" className="text-xs">
-                    Area in Sq.Ft
-                  </label>
-                  <input
-                    className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
-                    name="areaInSqFt"
-                    id="areaInSqFt"
-                    type="number"
-                    placeholder="Enter the Area in Sq.Ft"
-                    onChange={handlePropertyDetailsChange}
-                    value={userData.propertyDetails.areaInSqFt}
-                  />
-                  <span className="text-xs self-start w-full text-red-500">
-                    {nameError}
-                  </span>
-                </div>
-              </div>
-            </>
-          )}
-          <div className="flex justify-center w-full space-x-2">
-            <div className=" flex flex-col justify-center items-start">
-              <label htmlFor="media" className="text-xs mb-1">
-                Media(Images and Videos)
-              </label>
-              <input
-                className="file:border-none file:font-normal sm:font-semibold file:text-blue-500 w-full file:rounded-full file:bg-blue-50 file:px-4 file:py-2 "
-                type="file"
-                id="media"
-                name="media"
-                accept="image/png, image/jpeg, video/mp4"
-                multiple
-                onChange={handleMediaChange}
-              />
-              <div className="mt-2">
+            </div>
+          </>
+        )}
+        <div className="flex justify-center w-full space-x-2">
+          <div className=" flex flex-col justify-center items-start">
+            <label htmlFor="media" className="text-xs mb-1">
+              Media(Images and Videos)
+            </label>
+            <input
+              className="file:border-none file:font-normal sm:font-semibold file:text-blue-500 w-full file:rounded-full file:bg-blue-50 file:px-4 file:py-2 "
+              type="file"
+              id="media"
+              name="media"
+              accept="image/png, image/jpeg, video/mp4"
+              multiple
+              onChange={handleMediaChange}
+            />
+            <div className="mt-2">
+               
                 {userData.media &&
                   userData.media.length > 0 &&
-                  userData.media.map((item, index) => (
-                    <div key={index} className="mb-2">
-                      <img
-                        src={item.url}
-                        alt={`Media ${index}`}
-                        style={{ maxWidth: "200px", maxHeight: "200px" }}
-                      />
-                    </div>
-                  ))}
-                {userData.newMedia &&
-                  userData.newMedia.length > 0 &&
-                  userData.newMedia.map((file, index) => (
+                  userData.media.map((file, index) => (
                     <div key={index} className="mb-2">
                       <img
                         src={URL.createObjectURL(file.filedata)}
@@ -665,10 +654,11 @@ const EditProperty = () => {
                     </div>
                   ))}
               </div>
-            </div>
           </div>
-          <div className="flex justify-center w-full space-x-2">
-            <label htmlFor="price" className="text-xs">
+        </div>
+        <div className="flex justify-center sm:justify-start w-full space-x-2">
+        <div className=" flex flex-col justify-center  items-start">
+          <label htmlFor="price" className="text-xs">
               Price
             </label>
             <input
@@ -683,9 +673,10 @@ const EditProperty = () => {
             <span className="text-xs self-start w-full text-red-500">
               {priceError}
             </span>
-          </div>
-          <Button onClick={handleSubmit} title="Save Changes" />
-        </Card>
+            </div>
+            </div>
+        <Button onClick={handleSubmit} title="Post Property" />
+      </Card>
       </Container>
     )
   );

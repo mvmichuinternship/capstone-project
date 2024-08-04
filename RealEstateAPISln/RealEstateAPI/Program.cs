@@ -14,6 +14,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Identity;
 using Azure.Storage.Blobs;
 using System.Diagnostics.CodeAnalysis;
+using Azure.Communication.Email;
 
 
 namespace RealEstateAPI
@@ -30,6 +31,17 @@ namespace RealEstateAPI
             var secret = await client.GetSecretAsync(secretName);
             return secret.Value.Value;
         }
+
+        private static async Task<string> GetEmailCs()
+        {
+            const string secretName = "mv-67acres-email-cs";
+            var keyVaultName = "mv-67acres-cs";
+            var kvUri = $"https://{keyVaultName}.vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync(secretName);
+            return secret.Value.Value;
+        }
+
 
         private static async Task<string> GetBlobCs()
         {
@@ -151,9 +163,14 @@ namespace RealEstateAPI
             //builder.Services.AddScoped<ISmsService, TwilioSmsService>();
             builder.Services.AddScoped<IPropertyService, PropertyService>();
             builder.Services.AddScoped<IBlobService, BlobStorageService>();
+            builder.Services.AddScoped< EmailService>();
 
             var blobcs = await GetBlobCs();
             builder.Services.AddSingleton(x => new BlobServiceClient(blobcs));
+
+            var email = await GetEmailCs();
+            //EmailClient emailClient = new EmailClient(email);
+            builder.Services.AddSingleton(x => new EmailClient(email));
 
             var twilioAccountSid = await GetTwilioSid();
             var twilioAuthToken = await GetTwilioToken();

@@ -4,6 +4,9 @@ import Card from "../components/Card.tsx";
 import Button from "../components/Button.tsx";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import getCityFromGeolocation from "../components/GeolocationFunction.ts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocation } from "@fortawesome/free-solid-svg-icons";
 
 interface MediaItem {
   filedata: File;
@@ -108,6 +111,16 @@ const navigate = useNavigate();
       }));
     }
   };
+
+  const handleGetCity = () => {
+    getCityFromGeolocation((city) => {
+      setUserData((prevState) => ({
+        ...prevState,
+        location: city,
+      }));
+      // console.log(userData)
+    });
+  };
   
   useEffect(() => {
     var res = localStorage.getItem("loginData")
@@ -158,6 +171,7 @@ const navigate = useNavigate();
     formData.append('residentialSubtype', userData.residentialSubtype);
     formData.append('commercialSubtype', userData.commercialSubtype);
     formData.append('location', userData.location);
+    // console.log(userData)
     formData.append('price', userData.price.toString()); // Convert number to string
   
     // Append media files
@@ -188,6 +202,7 @@ const navigate = useNavigate();
         navigate('/my-properties')
       } else {
         // console.error("Failed to post property.");
+        // console.log(response)
         const errorText = await response.text();
         toast.error("Failed to post property.")
         // console.error("Error details:", errorText);
@@ -201,11 +216,11 @@ const navigate = useNavigate();
 
   return (
     (loggedIn&&role==="seller"&&(
-    <Container className="md:mt-[20%] sm:mt-[35%] pt-[80%] pb-10">
+    <Container className="sm:mt-20  pb-10">
       <Card className="space-y-4  md:w-[65%] w-[80%]">
         <span className="text-2xl">Post Property</span>
         <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2 ">
-          <div className=" flex flex-col justify-center items-start">
+          <div className=" flex flex-col justify-center items-start w-[50%]">
             <label htmlFor="name" className="text-xs">
               Name
             </label>
@@ -222,12 +237,14 @@ const navigate = useNavigate();
               {nameError}
             </span>
           </div>
-          <div className=" flex flex-col justify-center items-start">
+          <div className=" flex flex-col justify-center items-start w-[50%]">
             <label htmlFor="location" className="text-xs">
               Location
             </label>
+            <div className="flex w-full">
+
             <input
-              className="border border-neutral-300 rounded-md w-full px-4 py-1 focus:outline-blue-400"
+              className="border border-neutral-300 rounded-l w-full px-4 py-1 focus:outline-blue-400"
               name="location"
               id="location"
               type="text"
@@ -235,13 +252,15 @@ const navigate = useNavigate();
               onChange={handleInputChange}
               value={userData.location}
             />
+            <button className=" rounded-r bg-blue-400 "  onClick={handleGetCity}><FontAwesomeIcon icon={faLocation} className="h-4 w-4 mx-2 text-white" /></button>
+            </div>
             <span className="text-xs self-start w-full text-red-500">
               {locationError}
             </span>
           </div>
         </div>
         <span>
-          <span className="flex sm:self-start self-center justify-center sm:justify-start flex-wrap w-full py-4">
+          <span className="flex text-xs sm:self-start self-center justify-center sm:justify-start flex-wrap w-full py-4">
             Property type{" "}
           </span>
           <div className="flex sm:justify-start justify-center flex-wrap w-full sm:flex-nowrap  space-y-0 space-x-2">
@@ -295,7 +314,7 @@ const navigate = useNavigate();
             <span>
               {userData.propertyType === "Residential" ? (
                 <>
-                  <span className="flex self-start justify-center sm:justify-start flex-wrap w-full py-4">
+                  <span className="flex self-start justify-center text-xs sm:justify-start flex-wrap w-full py-4">
                     Choose a Residential Subtype
                   </span>
                   <div className="flex flex-wrap justify-center sm:justify-start sm:flex-nowrap  space-y-0 space-x-2">
@@ -344,17 +363,17 @@ const navigate = useNavigate();
                     <div>
                       <input
                         type="radio"
-                        id="PG"
+                        id="Pg"
                         name="residentialSubtype"
-                        value="PG"
-                        checked={userData.residentialSubtype === "PG"}
+                        value="Pg"
+                        checked={userData.residentialSubtype === "Pg"}
                         onChange={handleInputChange}
                         className="hidden"
                       />
                       <label
-                        htmlFor="PG"
+                        htmlFor="Pg"
                         className={`cursor-pointer rounded-full font-normal sm:font-semibold bg-blue-50 text-blue-500 px-4 py-2 transition-colors duration-200 ease-in-out ${
-                          userData.residentialSubtype === "PG"
+                          userData.residentialSubtype === "Pg"
                             ? "bg-blue-500 text-white"
                             : "bg-blue-100"
                         }`}
@@ -366,7 +385,7 @@ const navigate = useNavigate();
                 </>
               ) : (
                 <>
-                  <span className="flex self-start justify-center sm:justify-start flex-wrap w-full py-4">
+                  <span className="flex self-start justify-center text-xs sm:justify-start flex-wrap w-full py-4">
                     Choose a Commercial Subtype
                   </span>
                   <div className="flex flex-wrap justify-center sm:justify-start sm:flex-nowrap space-y-0 space-x-2">
@@ -421,7 +440,7 @@ const navigate = useNavigate();
         {userData.propertyType && userData.commercialSubtype && (
           <>
             <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="propertyDimensionsWidth" className="text-xs">
                   Property Width
                 </label>
@@ -438,7 +457,7 @@ const navigate = useNavigate();
                   {nameError}
                 </span>
               </div>
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="propertyDimensionsLength" className="text-xs">
                   Property Length
                 </label>
@@ -458,7 +477,7 @@ const navigate = useNavigate();
             </div>
 
             <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="widthofFacingRoad" className="text-xs">
                   Width of Facing Road
                 </label>
@@ -475,7 +494,7 @@ const navigate = useNavigate();
                   {nameError}
                 </span>
               </div>
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="commercialAreaInSqFt" className="text-xs">
                   Area in Sq.Ft
                 </label>
@@ -515,7 +534,7 @@ const navigate = useNavigate();
         {userData.propertyType && userData.residentialSubtype && (
           <>
             <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="numberOfBedrooms" className="text-xs">
                   Number of Bedrooms
                 </label>
@@ -532,7 +551,7 @@ const navigate = useNavigate();
                   {nameError}
                 </span>
               </div>
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="numberOfBathrooms" className="text-xs">
                   Number of Bathrooms
                 </label>
@@ -552,7 +571,7 @@ const navigate = useNavigate();
             </div>
 
             <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between w-full space-x-2">
-              <div className=" flex flex-col justify-center items-start">
+              <div className=" flex flex-col justify-center items-start w-[50%]">
                 <label htmlFor="areaInSqFt" className="text-xs">
                   Area in Sq.Ft
                 </label>
@@ -572,7 +591,7 @@ const navigate = useNavigate();
             </div>
           </>
         )}
-        <div className="flex justify-center w-full space-x-2">
+        <div className="flex justify-center sm:justify-start w-full space-x-2">
           <div className=" flex flex-col justify-center items-start">
             <label htmlFor="media" className="text-xs mb-1">
               Media(Images and Videos)

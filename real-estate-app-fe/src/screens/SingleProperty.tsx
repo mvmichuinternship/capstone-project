@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { toast } from "react-toastify";
+import Modal from "../components/Modal.tsx";
+import UpgradePlan from "../screens/UpgradePlan.tsx";
 
 const SingleProperty = () => {
   const { pid } = useParams();
@@ -15,20 +17,24 @@ const SingleProperty = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [role, setRole] = useState<any>("");
   const [plan, setPlan] = useState<any>("");
+  const [email1, setEmail] = useState("");
+  const [phone, setPhone] = useState<any>("");
   const [showContact, setShowContact] = useState(false);
   const [deleteProperty, setDeleteProperty] = useState(false);
+  const [isUpgradePlanModalOpen, setIsUpgradePlanModalOpen] = useState(false);
+
+  const toggleUpgradePlanModal = () => {
+    setIsUpgradePlanModalOpen(!isUpgradePlanModalOpen);
+  };
 
   const sliderSettings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  // var res = localStorage.getItem("loginData");
-  // if (res) {
-  //   setPlan(JSON.parse(res)?.plan)
-  //   }
+
   useEffect(() => {
     var res = localStorage.getItem("loginData");
     if (res) {
@@ -36,6 +42,7 @@ const SingleProperty = () => {
       if (JSON.parse(res)?.email && JSON.parse(res)?.role === "seller") {
         setLoggedIn(true);
         setRole("seller");
+        setEmail(JSON.parse(res)?.email)
       } else if (JSON.parse(res)?.email && JSON.parse(res)?.role === "buyer") {
         setLoggedIn(true);
         setRole("buyer");
@@ -58,41 +65,87 @@ const SingleProperty = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(email1);
         setProperty(data);
       })
       .catch((error) => {
-        console.error("Fetch error:", error);
+        // console.error("Fetch error:", error);
         navigate("/view-properties");
       });
   }, [pid, navigate]);
 
   const handleDelete=(e)=> {
     var res = localStorage.getItem("loginData");
+    if(res)
+    var parsedData = JSON.parse(res);
+  const {email, phone} = parsedData
+    setEmail(email);
+      setPhone(phone);
+      var subject = "Contacting via 67acres"
+      var htmlcontent=`<h1>Inquiry about property ${property?.name}</h1>`
     if (res) var token = JSON.parse(res)?.token;
     fetch(`http://localhost:5189/api/Property/DeleteProperty?postPropertyDTO=${pid}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
       },
+      
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         toast.success(`Deleted successfully`)
         setDeleteProperty(false);
       })
       .catch((error) => {
         toast.error(error)
         toast.error("Cannot delete property at the moment")
-        console.error("Fetch error:", error);
+        // console.error("Fetch error:", error);
         
       });
   }
 
-  // useEffect(() => {
-  //   console.log(property);
-  // }, [property]);
+  const handleSendEmail=async()=>{
+    var res =  localStorage.getItem("loginData");
+    var email2;
+    if(res){
+
+      var parsedData = JSON.parse(res);
+    const {email, phone} = parsedData
+      email2=email
+        setPhone(phone);
+    }
+    console.log(email2)
+      var subject = "Contacting via 67acres"
+      var htmlcontent=`<html><h1>Inquiry about property ${property?.name}</h1></html>`
+      const send = {
+        toEmail:email2.toString(),
+        subject: subject, 
+        htmlContent: htmlcontent
+      }
+    if (res) var token = JSON.parse(res)?.token;
+    fetch(`http://localhost:5189/api/Email/send`, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(send)
+      
+    })
+      .then(async(resp) => {
+        // console.log(resp)
+        toast.success(`Email sent successfully`)
+        return await resp.json();
+      })
+      .catch((error) => {
+        toast.error(error)
+        toast.error("Cannot send email at the moment")
+        // console.error("Fetch error:", error);
+        
+      });
+  }
+ 
 
   return (
     loggedIn && (
@@ -102,10 +155,10 @@ const SingleProperty = () => {
             Property Details
           </h1>
           <div className="flex flex-col md:flex-row mb-6 justify-between items-start space-y-10 md:space-y-0">
-            <div className="w-full md:w-1/2 ">
-              <Slider {...sliderSettings}>
+            <div className=" w-full md:w-1/2 max-h-lg h-1/2 z-1">
+              <Slider {...sliderSettings} className="text-blue-400 relative z-1">
                 {property?.media?.map((mediaItem: any, index: number) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="">
                     {mediaItem.type === "image/jpeg" || mediaItem.type ==="image/png" ? (
                       <img
                         src={mediaItem.url}
@@ -178,10 +231,14 @@ const SingleProperty = () => {
               )}
               {role === "buyer" && (
                 <>
-                  <div className="flex mt-4">
-                    {/* <button className="bg-blue-500 text-white py-2 px-4 rounded mr-2">
-                      Request
-                    </button> */}
+                  <div className="flex mt-4 space-x-2">
+                    
+                    <button
+                      onClick={handleSendEmail}
+                      className="bg-blue-500 text-white py-2 px-4 rounded"
+                    >
+                      Send Email
+                    </button>
                     {plan==="Premium" && !showContact&&(
                     <button
                       onClick={() => {setShowContact(true)}}
@@ -190,12 +247,22 @@ const SingleProperty = () => {
                       View contact
                     </button>)}
                     {plan==="Basic" &&(
+                      <div>
                     <button
-                      onClick={() => navigate('/upgrade')}
+                      onClick={toggleUpgradePlanModal}
                       className="bg-blue-500 text-white py-2 px-4 rounded"
                     >
                       Upgrade to view contact
-                    </button>)}
+                    </button>
+                    <Modal
+                    show={isUpgradePlanModalOpen}
+                    onClose={toggleUpgradePlanModal}
+                    title="Upgrade Plan Modal"
+                  >
+                    <UpgradePlan />
+                  </Modal>
+                  </div>
+                  )}
                   </div>
                   {showContact && (
                     <div className="mt-4">

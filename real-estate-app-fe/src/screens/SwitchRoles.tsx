@@ -104,6 +104,7 @@ import PropertyCard from "../components/Property-card.tsx";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button.tsx";
 import { toast } from "react-toastify";
+// import img from "../assets/buyerToSeller.jpeg"
 
 const SwitchRole = () => {
   const navigate = useNavigate();
@@ -132,7 +133,7 @@ const SwitchRole = () => {
     } else {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate, role, loggedIn,currentRole]);
 
   const handleSubmit = () => {
     const formData = new FormData();
@@ -157,6 +158,8 @@ const SwitchRole = () => {
           localStorage.setItem("loginData", JSON.stringify(data));
           setCurrentRole(data.role);
           setRole(data.role === "seller" ? "buyer" : "seller");
+          const event = new CustomEvent('roleChanged', { detail: data.role });
+          window.dispatchEvent(event);
         })
         .catch((error) => {
           toast.error(`Error switching roles`);
@@ -167,11 +170,13 @@ const SwitchRole = () => {
 
   return (
     loggedIn && (
-      <div className="flex sm:h-screen justify-start items-center space-x-2 flex-wrap space-y-2">
-        {currentRole === "seller" && <span>Switch to buyer account?</span>}
-        {currentRole === "buyer" && <span>Switch to seller account?</span>}
+      <div className="flex flex-col h-[50%] justify-start items-center space-x-2 flex-wrap space-y-2">
+        
+        {currentRole === "seller" && <div> <img src="/assets/sellerToBuyer.jpeg" alt="buyer?" /> <span> Switch to buyer account?</span></div>}
+        {currentRole === "buyer" && <div><img src="/assets/buyerToSeller.jpeg" alt="seller?" /><span>Switch to seller account?</span></div>}
         <Button
-          title={`${currentRole === "seller" ? "Buyer" : "Seller"}`}
+          // title={`${currentRole === "seller" ? "Buyer" : "Seller"}`}
+          title="Switch"
           onClick={handleSubmit}
         />
       </div>
