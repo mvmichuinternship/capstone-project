@@ -27,7 +27,7 @@ jobs:
         working-directory: ./RealEstateAPISln/RealEstateAPI # Specify the directory containing the .csproj file
 
       - name: List published files
-        run: ls -la ./publish
+        run: ls -la ./RealEstateAPISln/RealEstateAPI/publish
         working-directory: ./RealEstateAPISln/RealEstateAPI
 
       - name: Upload artifact for deployment job
