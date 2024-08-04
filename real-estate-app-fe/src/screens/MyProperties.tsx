@@ -33,7 +33,7 @@ const MyProperties = () => {
 
   useEffect(() => {
     if (loggedIn && role === "seller" && email) {
-      fetch('http://localhost:5189/api/Property/GetProperties', {
+      fetch('https://67acres-webapp.azurewebsites.net/api/Property/GetProperties', {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${JSON.parse(localStorage.getItem("loginData") || '{}')?.token}`,
@@ -41,11 +41,12 @@ const MyProperties = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("data", data);
+          console.log("data", data);
           const filteredProperties = data.filter((property: any) => property.userEmail === email);
           setProperties(filteredProperties);
         })
         .catch((error) => {
+          console.log(error)
           // console.error('Fetch error:', error); // Handle any errors that occur during fetch
         });
     }

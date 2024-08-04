@@ -161,3 +161,5 @@ pd = await MapToPD(property.PropertyDetails);
   ],
   "price": 10000
 }
+
+OAuth doesn’t share password data but instead uses authorization tokens to prove an identity between consumers and service providers
