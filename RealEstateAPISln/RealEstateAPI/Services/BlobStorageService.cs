@@ -23,11 +23,11 @@ namespace RealEstateAPI.Services
 
         public async Task<string> UploadFileAsync(IFormFile file)
         {
-            if (file == null || file.Length == 0)
-            {
-                throw new ArgumentException("No file uploaded");
-            }
+            //if (file == null || file.Length == 0)
+            //{
+                
 
+            //}
             var blobContainerClient = _blobServiceClient.GetBlobContainerClient(_containerName);
             await blobContainerClient.CreateIfNotExistsAsync();
 

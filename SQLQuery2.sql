@@ -6,12 +6,12 @@ select * from OtpRecords
 select * from TokenData
 
 UPDATE users
-SET phone = '7338985215'
-WHERE UserEmail='mridu@gmail.com';
+SET phone = '7338985214'
+WHERE UserEmail='mvmichuinternships@gmail.com';
 
 UPDATE TokenData
-SET phone = '7338985215'
-WHERE UserEmail='mridu@gmail.com';
+SET phone = '7338985214'
+WHERE UserEmail='mvmichuinternships@gmail.com';
 
 
 delete from users where UserEmail='mridu@gmail.com';
