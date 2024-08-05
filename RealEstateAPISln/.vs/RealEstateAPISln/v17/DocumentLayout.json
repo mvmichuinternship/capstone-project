@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\media.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\media.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\medias\\mediadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\medias\\mediadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\properties\\getpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\properties\\getpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\properties\\postpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\properties\\postpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\controllers\\propertycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\controllers\\propertycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\services\\blobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\services\\blobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\services\\twiliosmsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\services\\twiliosmsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\medias\\mediadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\medias\\mediadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,20 +87,8 @@
       "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\otp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\media.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\media.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\register\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\register\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\properties\\postpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\properties\\postpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\properties\\getpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|solutionrelative:realestateapi\\models\\dtos\\properties\\getpropertydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73D416A3-DF08-496B-B06A-F7ED42935853}|RealEstateAPI\\RealEstateAPI.csproj|c:\\users\\vc\\desktop\\presidio\\67acres\\realestateapisln\\realestateapi\\models\\dtos\\login\\passworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -150,7 +154,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -158,59 +162,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BlobStorageService.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\BlobStorageService.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\BlobStorageService.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\BlobStorageService.cs",
-              "RelativeToolTip": "RealEstateAPI\\Services\\BlobStorageService.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAnwB0AAAAPAAAA",
+              "DocumentIndex": 3,
+              "Title": "PostPropertyDTO.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
+              "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T15:02:29.912Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TwilioSmsService.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\TwilioSmsService.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\TwilioSmsService.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\TwilioSmsService.cs",
-              "RelativeToolTip": "RealEstateAPI\\Services\\TwilioSmsService.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:54:13.054Z",
+              "WhenOpened": "2024-08-02T10:59:04.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "RealEstateAPI\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAArwF4AAAAIAAAA",
+              "Title": "GetPropertyDTO.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
+              "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T14:04:08.358Z",
+              "WhenOpened": "2024-08-02T10:58:57.733Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LoginService.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\LoginService.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\LoginService.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\LoginService.cs",
-              "RelativeToolTip": "RealEstateAPI\\Services\\LoginService.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAArwC0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T04:43:06.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MediaDTO.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Medias\\MediaDTO.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Medias\\MediaDTO.cs",
@@ -223,7 +201,82 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Media.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Media.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\Media.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Media.cs",
+              "RelativeToolTip": "RealEstateAPI\\Models\\Media.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T10:59:32.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PropertyController.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\PropertyController.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\PropertyController.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\PropertyController.cs",
+              "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T13:47:27.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BlobStorageService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\BlobStorageService.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\BlobStorageService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\BlobStorageService.cs",
+              "RelativeToolTip": "RealEstateAPI\\Services\\BlobStorageService.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAIA6wB0AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T15:02:29.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "RealEstateAPI\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAArwF4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T14:04:08.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TwilioSmsService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\TwilioSmsService.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\TwilioSmsService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\TwilioSmsService.cs",
+              "RelativeToolTip": "RealEstateAPI\\Services\\TwilioSmsService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T10:54:13.054Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\LoginService.cs",
+              "RelativeDocumentMoniker": "RealEstateAPI\\Services\\LoginService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\LoginService.cs",
+              "RelativeToolTip": "RealEstateAPI\\Services\\LoginService.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAArwC0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T04:43:06.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Program.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Program.cs",
@@ -235,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ErrorModel.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\ErrorModel.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\ErrorModel.cs",
@@ -243,12 +296,11 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\ErrorModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:59:26.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T10:59:26.712Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Services\\EmailService.cs",
@@ -260,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "EmailController.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Controllers\\EmailController.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Controllers\\EmailController.cs",
@@ -272,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "EmailRequest.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Email\\EmailRequest.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Email\\EmailRequest.cs",
@@ -284,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "20240801060540_67-acres.Designer.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Migrations\\20240801060540_67-acres.Designer.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Migrations\\20240801060540_67-acres.Designer.cs",
@@ -296,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "Property.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Property.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\Property.cs",
@@ -308,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "PropertyDetails.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\PropertyDetails.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\PropertyDetails.cs",
@@ -320,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\User.cs",
@@ -332,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "TokenData.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\TokenData.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\TokenData.cs",
@@ -344,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Contact.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\Contact.cs",
@@ -356,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "OTP.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\OTP.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\OTP.cs",
@@ -368,19 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Media.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Media.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\Media.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Media.cs",
-              "RelativeToolTip": "RealEstateAPI\\Models\\Media.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:59:32.386Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Register\\UserDTO.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Register\\UserDTO.cs",
@@ -392,31 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "PostPropertyDTO.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
-              "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:59:04.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "GetPropertyDTO.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
-              "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
-              "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
-              "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:58:57.733Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "PasswordDTO.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Login\\PasswordDTO.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Login\\PasswordDTO.cs",
@@ -428,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "MobileDTO.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Login\\MobileDTO.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Login\\MobileDTO.cs",
@@ -440,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "LoginTokenDTO.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\DTOs\\Login\\LoginTokenDTO.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\DTOs\\Login\\LoginTokenDTO.cs",
@@ -452,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "IBlobService.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Interfaces\\IBlobService.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Interfaces\\IBlobService.cs",
@@ -464,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UnauthorizedUserException.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Exceptions\\UnauthorizedUserException.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Exceptions\\UnauthorizedUserException.cs",
@@ -476,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "UnableToAddException.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Exceptions\\UnableToAddException.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Exceptions\\UnableToAddException.cs",
@@ -488,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "NoUserException.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Exceptions\\NoUserException.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Exceptions\\NoUserException.cs",
@@ -500,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "NoPropertyException.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Exceptions\\NoPropertyException.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Exceptions\\NoPropertyException.cs",
@@ -512,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "CommercialSubtype.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Enums\\CommercialSubtype.cs",
               "RelativeDocumentMoniker": "RealEstateAPI\\Enums\\CommercialSubtype.cs",
@@ -524,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "MediaRepositoryTest.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealestateAppTesting\\RepositoryTesting\\MediaRepositoryTest.cs",
               "RelativeDocumentMoniker": "RealestateAppTesting\\RepositoryTesting\\MediaRepositoryTest.cs",
@@ -536,7 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "PropertyDetailsRepositoryTest.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealestateAppTesting\\RepositoryTesting\\PropertyDetailsRepositoryTest.cs",
               "RelativeDocumentMoniker": "RealestateAppTesting\\RepositoryTesting\\PropertyDetailsRepositoryTest.cs",
@@ -548,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "PropertyServiceTest.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealestateAppTesting\\ServiceTesting\\PropertyServiceTest.cs",
               "RelativeDocumentMoniker": "RealestateAppTesting\\ServiceTesting\\PropertyServiceTest.cs",
@@ -556,12 +572,11 @@
               "RelativeToolTip": "RealestateAppTesting\\ServiceTesting\\PropertyServiceTest.cs",
               "ViewState": "AQIAAF4AAAAAAAAAAAAgwHAAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T18:55:36.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-01T18:55:36.263Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "UserRepositoryTest.cs",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealestateAppTesting\\RepositoryTesting\\UserRepositoryTest.cs",
               "RelativeDocumentMoniker": "RealestateAppTesting\\RepositoryTesting\\UserRepositoryTest.cs",
@@ -573,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Dockerfile",
               "RelativeDocumentMoniker": "RealEstateAPI\\Dockerfile",
