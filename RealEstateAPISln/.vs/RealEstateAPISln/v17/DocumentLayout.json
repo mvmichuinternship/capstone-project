@@ -170,8 +170,7 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\PostPropertyDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:59:04.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T10:59:04.352Z"
             },
             {
               "$type": "Document",
@@ -183,8 +182,7 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Properties\\GetPropertyDTO.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAwAYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:58:57.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T10:58:57.733Z"
             },
             {
               "$type": "Document",
@@ -196,8 +194,7 @@
               "RelativeToolTip": "RealEstateAPI\\Models\\DTOs\\Medias\\MediaDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:58:51.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-02T10:58:51.006Z"
             },
             {
               "$type": "Document",
@@ -207,7 +204,7 @@
               "RelativeDocumentMoniker": "RealEstateAPI\\Models\\Media.cs",
               "ToolTip": "C:\\Users\\VC\\Desktop\\Presidio\\67acres\\RealEstateAPISln\\RealEstateAPI\\Models\\Media.cs",
               "RelativeToolTip": "RealEstateAPI\\Models\\Media.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAZAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-02T10:59:32.386Z",
               "EditorCaption": ""
@@ -222,8 +219,7 @@
               "RelativeToolTip": "RealEstateAPI\\Controllers\\PropertyController.cs",
               "ViewState": "AQIAAEIAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T13:47:27.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-05T13:47:27.945Z"
             },
             {
               "$type": "Document",
@@ -235,8 +231,7 @@
               "RelativeToolTip": "RealEstateAPI\\Services\\BlobStorageService.cs",
               "ViewState": "AQIAABcAAAAAAAAAAIA6wB0AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T15:02:29.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-04T15:02:29.912Z"
             },
             {
               "$type": "Document",
